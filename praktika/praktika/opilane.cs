@@ -15,6 +15,7 @@ namespace praktika
         public int janu { get; set; }
         public int raha { get; set; }
         public int stress { get; set; }
+        public int promill { get; set; }
 
 
     }
