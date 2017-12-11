@@ -10,8 +10,38 @@ namespace praktika
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("w");
-            Console.WriteLine("TERE");
+            Console.WriteLine("Vajuta Y, et käivitada mäng");
+            WaitForKey(ConsoleKey.Y);
+            Console.WriteLine("Täna lähme kooli. \nVajuta A - maga edasi\n B- mine kooli");
+            string key = Console.ReadKey().Key.ToString();
+
+            if (key.ToUpper() == "A")
+            {
+                magaEdasi();
+            }
+            else if(key.ToUpper() == "B")
+            {
+                mineKooli();
+            }
+
+
+            Console.ReadLine();
+        }
+
+        static void WaitForKey(ConsoleKey key)
+        {
+            while (Console.ReadKey(true).Key != key)
+            { }
+        }
+
+        static void magaEdasi()
+        {
+            Console.WriteLine("\nMagan edasi");
+        }
+
+        static void mineKooli()
+        {
+            Console.WriteLine("\nLähen kooli");
         }
     }
 }
