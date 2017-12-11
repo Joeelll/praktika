@@ -45,10 +45,11 @@ namespace praktika
 
         static void magaEdasi()
         {
-            Console.WriteLine("\nMagan edasi");
+            Console.WriteLine("\nOtsustasid edasi magada, kuid ema ajas sind ikka kooli.");
             Mait.volgnevused += 10;
             Mait.vasimus -= 75;
-            Mait.stress = 0;
+            Mait.stress += 5;
+            mineKooli();
         }
 
         static void mineKooli()
