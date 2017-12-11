@@ -11,6 +11,7 @@ namespace praktika
         static opilane Mait;
         static string key;
         static int skoor = 0;
+        static Random rnd = new Random();
 
         static void Main(string[] args)
         {
@@ -76,6 +77,22 @@ namespace praktika
             else if (key.ToUpper() == "B")
             {
 
+                Console.WriteLine("\nLähed sööklasse!" + "\nKontrollid, kas kaardi võtsid.");
+                int chance = rnd.Next(1, 100);
+                if (chance % 2 == 0)
+                {
+                    Console.WriteLine("Jätsid kaardi koju lollpea!");
+                    Console.WriteLine("Klapid asjad söögitädiga ära");
+                    Mait.stress += 10;
+                    Mait.nalg = 0;
+                    Mait.janu = 0;
+                }
+                else
+                {
+                    Console.WriteLine("Kaart on olemas, täna saab süüa");
+                    Mait.nalg = 0;
+                    Mait.janu = 0;
+                }
             }
         }
 
