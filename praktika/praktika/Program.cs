@@ -61,7 +61,7 @@ namespace praktika
             Mait.stress = 50;
 
             Console.WriteLine("On söögi vahetund.\n A- lähed hessi\n B- lähed sööklasse");
-            key = Console.ReadKey().Key.ToString();~a
+            key = Console.ReadKey().Key.ToString();
             if (key.ToUpper() == "A")
             {
 
