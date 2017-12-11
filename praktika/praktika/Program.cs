@@ -8,13 +8,16 @@ namespace praktika
 {
     class Program
     {
-        internal static opilane Mait = new opilane();
+        static opilane Mait;
+        static string key = Console.ReadKey().Key.ToString();
+        static int skoor = 0;
 
         static void Main(string[] args)
         {
             Console.WriteLine("Vajuta Y, et käivitada mäng");
             WaitForKey(ConsoleKey.Y);
 
+            Mait = new opilane();
             Mait.raha = 10;
             Mait.nalg = 0;
             Mait.janu = 0;
@@ -23,15 +26,16 @@ namespace praktika
             Mait.stress = 0;
 
             Console.WriteLine("Täna lähme kooli. \nVajuta A - maga edasi\n B- mine kooli");
-            string key = Console.ReadKey().Key.ToString();
 
             if (key.ToUpper() == "A")
             {
                 magaEdasi();
+                skoor++;
             }
             else if(key.ToUpper() == "B")
             {
                 mineKooli();
+                skoor++;
             }
 
 
@@ -59,12 +63,39 @@ namespace praktika
             Mait.vasimus += 15;
             Mait.stress = 50;
 
-            Console.WriteLine();
+            Console.WriteLine("On söögi vahetund.\n A- lähed hessi\n B- lähed sööklasse");
+            if (key.ToUpper() == "A")
+            {
+
+
+            }
+            else if (key.ToUpper() == "B")
+            {
+
+            }
+        }
+
+        static void hessi()
+        {
+
+        }
+
+        static void sookla()
+        {
+
         }
 
         static void alkomyrgitus()
         {
-
+            if (Mait.raha >= 5)
+            {
+                Mait.raha -= 5;
+                Console.WriteLine("Haiglaarve tuli 5 euri. Sul on raha alles: " + Mait.raha + "euri");
+            }
+            else
+            {
+                Console.WriteLine("Sul pole raha, et haiglaarvet maksta. Sind jäetakse surema.");
+            }
         }
 
         static void kontrollinaitajaid()
@@ -83,6 +114,11 @@ namespace praktika
                 alkomyrgitus();
             }
 
+        }
+        
+        static void surm()
+        {
+            Console.WriteLine("Mäng on läbi, surid ära. Skoor on: " + skoor);
         }
     }
 }
