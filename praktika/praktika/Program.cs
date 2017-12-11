@@ -21,6 +21,7 @@ namespace praktika
             Mait.vasimus = 15;
             Mait.volgnevused = 0;
             Mait.stress = 0;
+            Mait.promill = 0;
 
             Console.WriteLine("Täna lähme kooli. \nVajuta A - maga edasi\n B- mine kooli");
             string key = Console.ReadKey().Key.ToString();
