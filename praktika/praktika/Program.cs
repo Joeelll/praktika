@@ -15,13 +15,7 @@ namespace praktika
         static void Main(string[] args)
         {
             Console.WriteLine("Vajuta Y, et käivitada mäng");
-            while (true)
-            {
-                if (key.ToUpper() == "Y")
-                {
-                    break;
-                }
-            }
+            WaitForKey(ConsoleKey.Y);
 
             Mait = new opilane();
             Mait.raha = 10;
@@ -96,6 +90,7 @@ namespace praktika
             else
             {
                 Console.WriteLine("Sul pole raha, et haiglaarvet maksta. Sind jäetakse surema.");
+                surm();
             }
         }
 
@@ -104,15 +99,18 @@ namespace praktika
             if (Mait.stress >= 100)
             {
                 Console.WriteLine("Tegid suicide");
+                surm();
             }
             if (Mait.nalg >= 100)
             {
                 Console.WriteLine("Surid nälga");
+                surm();
             }
             if (Mait.promill >= 75)
             {
                 Console.WriteLine("Said alkoholimürgituse, sind viiakse kiirabiga haiglasse");
                 alkomyrgitus();
+                skoor++;
             }
 
         }
@@ -120,6 +118,12 @@ namespace praktika
         static void surm()
         {
             Console.WriteLine("Mäng on läbi, surid ära. Skoor on: " + skoor);
+        }
+
+        static void WaitForKey(ConsoleKey key)
+        {
+            while (Console.ReadKey(true).Key != key)
+            { }
         }
     }
 }
