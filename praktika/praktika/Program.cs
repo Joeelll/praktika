@@ -9,7 +9,7 @@ namespace praktika
     class Program
     {
         static opilane Mait;
-        static string key = Console.ReadKey().Key.ToString();
+        static string key;
         static int skoor = 0;
 
         static void Main(string[] args)
@@ -28,6 +28,7 @@ namespace praktika
 
             Console.WriteLine("Täna lähme kooli. \nVajuta A - maga edasi\n B- mine kooli");
 
+            key = Console.ReadKey().Key.ToString();
             if (key.ToUpper() == "A")
             {
                 magaEdasi();
@@ -60,6 +61,7 @@ namespace praktika
             Mait.stress = 50;
 
             Console.WriteLine("On söögi vahetund.\n A- lähed hessi\n B- lähed sööklasse");
+            key = Console.ReadKey().Key.ToString();~a
             if (key.ToUpper() == "A")
             {
 
