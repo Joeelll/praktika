@@ -49,8 +49,10 @@ namespace praktika
         {
             Console.WriteLine("\nOtsustasid edasi magada, kuid ema ajas sind ikka kooli.");
             Mait.volgnevused += 10;
-            Mait.vasimus -= 75;
+            Mait.vasimus -= 5;
             Mait.stress += 5;
+            kontrollinaitajaid();
+            skoor++;
             mineKooli();
         }
 
@@ -58,8 +60,9 @@ namespace praktika
         {
             Console.WriteLine("\nLähen kooli");
             Mait.volgnevused = 0;
-            Mait.vasimus += 15;
-            Mait.stress = 50;
+            Mait.vasimus += 10;
+            Mait.stress += 5;
+            kontrollinaitajaid();
 
             Console.WriteLine("On söögi vahetund.\n A- lähed hessi\n B- lähed sööklasse");
             key = Console.ReadKey().Key.ToString();
@@ -67,8 +70,8 @@ namespace praktika
             {
                 Console.WriteLine("-Lähen Hessi!");
                 Console.WriteLine("Hessis on järjekord, jääd tundi hiljaks!");
-                Mait.vasimus = 5;
-                Mait.volgnevused = 10;
+                Mait.vasimus -= 5;
+                Mait.volgnevused += 10;
                 Mait.nalg = 0;
                 Mait.janu = 0;
                 skoor++;
@@ -83,16 +86,18 @@ namespace praktika
                 {
                     Console.WriteLine("Jätsid kaardi koju lollpea!");
                     Console.WriteLine("Klapid asjad söögitädiga ära");
-                    Mait.stress += 10;
-                    Mait.nalg = 0;
-                    Mait.janu = 0;
+                    Mait.stress += 5;
+                    Mait.nalg = 10;
+                    Mait.janu = 10;
+                    kontrollinaitajaid();
                 }
                 else
                 {
                     Console.WriteLine("Kaart on olemas, täna saab süüa");
-                    Mait.nalg = 0;
-                    Mait.janu = 0;
+                    Mait.nalg = 10;
+                    Mait.janu = 10;
                 }
+                skoor++;
             }
         }
 
@@ -101,7 +106,7 @@ namespace praktika
 
         }
 
-        static void sookla()
+        static void sooklasse()
         {
 
         }
