@@ -15,7 +15,13 @@ namespace praktika
         static void Main(string[] args)
         {
             Console.WriteLine("Vajuta Y, et käivitada mäng");
-            WaitForKey(ConsoleKey.Y);
+            while (true)
+            {
+                if (key.ToUpper() == "Y")
+                {
+                    break;
+                }
+            }
 
             Mait = new opilane();
             Mait.raha = 10;
@@ -41,12 +47,6 @@ namespace praktika
 
 
             Console.ReadLine();
-        }
-
-        static void WaitForKey(ConsoleKey key)
-        {
-            while (Console.ReadKey(true).Key != key)
-            { }
         }
 
         static void magaEdasi()
