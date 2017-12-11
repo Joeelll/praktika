@@ -70,7 +70,7 @@ namespace praktika
             }
             else if (key.ToUpper() == "B")
             {
-                sookla()
+                sookla();
             }
         }
 
