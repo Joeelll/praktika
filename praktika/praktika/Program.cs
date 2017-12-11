@@ -10,6 +10,8 @@ namespace praktika
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("oi tervist");
+            Console.ReadLine();
         }
     }
 }
