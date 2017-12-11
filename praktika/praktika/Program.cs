@@ -27,7 +27,7 @@ namespace praktika
             Mait.stress = 0;
             Mait.promill = 0;
 
-            Console.WriteLine("Täna lähme kooli. \nVajuta A - maga edasi\n B- mine kooli");
+            Console.WriteLine("Täna lähme kooli. \nVajuta A - maga edasi\n       B- mine kooli");
 
             key = Console.ReadKey().Key.ToString();
             if (key.ToUpper() == "A")
@@ -64,6 +64,14 @@ namespace praktika
             Mait.stress += 5;
             kontrollinaitajaid();
 
+            while (true)
+            {
+                Console.WriteLine("Tunnitöö: (A-Tee kaasa/B-Mängi growtopiat)");
+                tunnitoo();
+                break;
+            }
+            
+
             Console.WriteLine("On söögi vahetund.\n A- lähed hessi\n B- lähed sööklasse");
             key = Console.ReadKey().Key.ToString();
             if (key.ToUpper() == "A")
@@ -80,7 +88,7 @@ namespace praktika
         static void hessi()
         {
 
-            Console.WriteLine("-Lähen Hessi!");
+            Console.WriteLine("\nLähen Hessi!");
             Console.WriteLine("Hessis on järjekord, jääd tundi hiljaks!");
             Mait.vasimus = 5;
             Mait.volgnevused = 10;
@@ -96,7 +104,6 @@ namespace praktika
             if (chance % 2 == 0)
             {
                 Console.WriteLine("Jätsid kaardi koju lollpea!");
-                Console.WriteLine("Klapid asjad söögitädiga ära");
                 Mait.stress += 10;
                 Mait.nalg = 0;
                 Mait.janu = 0;
@@ -147,6 +154,23 @@ namespace praktika
         static void surm()
         {
             Console.WriteLine("Mäng on läbi, surid ära. Skoor on: " + skoor);
+        }
+
+        static void tunnitoo()
+        {
+            key = Console.ReadKey().Key.ToString();
+            if (key.ToUpper() == "A")
+            {
+                Console.WriteLine("\nOled tulbi tuupur, õpid Dell'i manuaali pähe!");
+                Mait.stress += 10;
+            }
+            else if (key.ToUpper() == "B")
+            {
+                Console.WriteLine("\nAvasid growtopias viienda leveli!");
+                Mait.volgnevused += 15;
+                Mait.stress -= 10;
+                skoor++;
+            }
         }
 
         static void WaitForKey(ConsoleKey key)
