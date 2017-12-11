@@ -68,47 +68,45 @@ namespace praktika
             key = Console.ReadKey().Key.ToString();
             if (key.ToUpper() == "A")
             {
-                Console.WriteLine("-Lähen Hessi!");
-                Console.WriteLine("Hessis on järjekord, jääd tundi hiljaks!");
-                Mait.vasimus -= 5;
-                Mait.volgnevused += 10;
-                Mait.nalg = 0;
-                Mait.janu = 0;
-                skoor++;
-
+                hessi();
             }
             else if (key.ToUpper() == "B")
             {
+                sookla();
 
-                Console.WriteLine("\nLähed sööklasse!" + "\nKontrollid, kas kaardi võtsid.");
-                int chance = rnd.Next(1, 100);
-                if (chance % 2 == 0)
-                {
-                    Console.WriteLine("Jätsid kaardi koju lollpea!");
-                    Console.WriteLine("Klapid asjad söögitädiga ära");
-                    Mait.stress += 5;
-                    Mait.nalg = 10;
-                    Mait.janu = 10;
-                    kontrollinaitajaid();
-                }
-                else
-                {
-                    Console.WriteLine("Kaart on olemas, täna saab süüa");
-                    Mait.nalg = 10;
-                    Mait.janu = 10;
-                }
-                skoor++;
             }
         }
 
         static void hessi()
         {
 
+            Console.WriteLine("-Lähen Hessi!");
+            Console.WriteLine("Hessis on järjekord, jääd tundi hiljaks!");
+            Mait.vasimus = 5;
+            Mait.volgnevused = 10;
+            Mait.nalg = 0;
+            Mait.janu = 0;
+            skoor++;
         }
 
-        static void sooklasse()
+        static void sookla()
         {
-
+            Console.WriteLine("\nLähed sööklasse!" + "\nKontrollid, kas kaardi võtsid.");
+            int chance = rnd.Next(1, 100);
+            if (chance % 2 == 0)
+            {
+                Console.WriteLine("Jätsid kaardi koju lollpea!");
+                Console.WriteLine("Klapid asjad söögitädiga ära");
+                Mait.stress += 10;
+                Mait.nalg = 0;
+                Mait.janu = 0;
+            }
+            else
+            {
+                Console.WriteLine("Kaart on olemas, täna saab süüa");
+                Mait.nalg = 0;
+                Mait.janu = 0;
+            }
         }
 
         static void alkomyrgitus()
