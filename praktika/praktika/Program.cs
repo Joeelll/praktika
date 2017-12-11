@@ -65,14 +65,8 @@ namespace praktika
             key = Console.ReadKey().Key.ToString();
             if (key.ToUpper() == "A")
             {
-                Console.WriteLine("-Lähen Hessi!");
-                Console.WriteLine("Hessis on järjekord, jääd tundi hiljaks!");
-                Mait.vasimus = 5;
-                Mait.volgnevused = 10;
-                Mait.nalg = 0;
-                Mait.janu = 0;
-                skoor++;
 
+                hessi();
             }
             else if (key.ToUpper() == "B")
             {
@@ -99,6 +93,13 @@ namespace praktika
         static void hessi()
         {
 
+            Console.WriteLine("-Lähen Hessi!");
+            Console.WriteLine("Hessis on järjekord, jääd tundi hiljaks!");
+            Mait.vasimus = 5;
+            Mait.volgnevused = 10;
+            Mait.nalg = 0;
+            Mait.janu = 0;
+            skoor++;
         }
 
         static void sookla()
