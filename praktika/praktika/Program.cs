@@ -225,7 +225,7 @@ namespace praktika
             key = Console.ReadKey().Key.ToString();
             if (key.ToUpper() == "A")
             {
-                Console.WriteLine("\nOled tulbi tuupur, õppisid Dell'i manuaali pähe!");
+                Console.WriteLine("\nOled tubli tuupur, õppisid Dell'i manuaali pähe!");
                 Mait.stress += 10;
             }
             else if (key.ToUpper() == "B")
