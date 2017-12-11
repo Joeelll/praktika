@@ -95,6 +95,33 @@ namespace praktika
             Mait.nalg = 0;
             Mait.janu = 0;
             skoor++;
+            autosoit();
+        }
+        static void autosoit()
+        {
+            Console.WriteLine("Kas sa tahad peale hessi ilma lubadeta autoga sõita? \n A- Lähen sõitma!\n B- Ei lähe sõitma");
+            key = Console.ReadKey().Key.ToString();
+            if (key.ToUpper() == "A")
+            {
+                int chance = rnd.Next(1, 100);
+                if (chance % 2 == 0)
+                {
+                    Console.WriteLine("-Jäid Politseile vahele!");
+                    Mait.stress += 30;
+                    Mait.raha = 0;
+                }
+                else
+                {
+                    Console.WriteLine("-Vedas, ei jäänud vahele!");
+                    skoor++;
+                }
+                if (key.ToUpper() == "B")
+                {
+                    Console.WriteLine("Väga tubli! Ilma lubadeta ei tohi sõita!");
+                    skoor++;
+                }
+            }
+
         }
 
         static void sookla()
@@ -180,3 +207,16 @@ namespace praktika
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
