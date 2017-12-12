@@ -148,7 +148,7 @@ namespace praktika
                 }
                 else if (key.ToUpper() == "B")
                 {
-                    if (Mait.raha <= 5)
+                    if (Mait.raha >= 5)
                     {
                         Mait.raha -= 5;
                         Console.WriteLine("Sööd kuivanud kooli pitsat! Gurmee!");
