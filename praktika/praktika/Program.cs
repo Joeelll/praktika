@@ -124,6 +124,7 @@ namespace praktika
             {
                 Console.WriteLine("Väga tubli! Ilma lubadeta ei tohi sõita!");  
             }
+            kontrollinaitajaid();
         }
 
         static void sookla()
@@ -178,6 +179,7 @@ namespace praktika
                 Mait.nalg = 0;
                 Mait.janu = 0;
             }
+            kontrollinaitajaid();
         }
 
          static void kustuta_sisend()
@@ -193,6 +195,7 @@ namespace praktika
             if (Mait.raha >= 5)
             {
                 Mait.raha -= 5;
+                Mait.stress += 10;
                 Console.WriteLine("Haiglaarve tuli 5 euri. Sul on raha alles: " + Mait.raha + "euri");
             }
             else
@@ -200,6 +203,7 @@ namespace praktika
                 Console.WriteLine("Sul pole raha, et haiglaarvet maksta. Sind jäetakse surema.");
                 surm();
             }
+            kontrollinaitajaid();
         }
 
         static void kontrollinaitajaid()
@@ -243,6 +247,7 @@ namespace praktika
                 Mait.stress -= 10;
                 skoor++;
             }
+            kontrollinaitajaid();
         }
 
         static void kontrolltoo()
@@ -280,6 +285,7 @@ namespace praktika
 
                 }
             }
+            kontrollinaitajaid();
             tups();
         }
         static void kehaline()
@@ -370,7 +376,7 @@ namespace praktika
                     }
                 }
             }
-
+            kontrollinaitajaid();
             autosoit();
         }
 
@@ -404,6 +410,7 @@ namespace praktika
                 Console.WriteLine("Tubli! Tupsu ei tohigi müüa");
                 skoor++;
             }
+            kontrollinaitajaid();
             autosoit();
         }
     }
