@@ -26,7 +26,7 @@ namespace praktika
             Mait.volgnevused = 0;
             Mait.stress = 0;
             Mait.promill = 0;
-
+            Mait.tups = 10;
 
             Console.WriteLine("Täna lähme kooli.\nVajuta: \nA - maga edasi\nB - mine kooli\n");
 
@@ -41,8 +41,7 @@ namespace praktika
             {
                 mineKooli();
                 skoor++;
-            }
-            
+            }    
         }
 
         static void magaEdasi()
@@ -64,11 +63,8 @@ namespace praktika
             Mait.stress += 5;
             kontrollinaitajaid();
 
-
             Console.WriteLine("Jõudsid kooli ja õpetaja andis rühmatunnitöö.\nA - Tee kaasa\nB - Mängi growtopiat\n");
             tunnitoo();
-
-
 
             Console.WriteLine("On söögi vahetund.\nA - Lähed toitlustusasutusse Hesburger\nB - Lähed sööklasse\n");
             key = Console.ReadKey().Key.ToString();
@@ -91,20 +87,17 @@ namespace praktika
             {
                 kontrolltoo();
             }
-
         }
 
 
         static void hessi()
         {
-
             Console.WriteLine("Lähen Hessi!\nHessis on järjekord, jääd tundi hiljaks!");
             Mait.vasimus = 5;
             Mait.volgnevused = 10;
             Mait.nalg = 0;
             Mait.janu = 0;
             skoor++;
-
         }
 
         static void autosoit()
@@ -129,8 +122,7 @@ namespace praktika
             }
             else if (key.ToUpper() == "B")
             {
-                Console.WriteLine("Väga tubli! Ilma lubadeta ei tohi sõita!");
-                
+                Console.WriteLine("Väga tubli! Ilma lubadeta ei tohi sõita!");  
             }
         }
 
@@ -179,7 +171,6 @@ namespace praktika
                 {
                     hessi();
                 }
-
             }
             else
             {
@@ -187,10 +178,7 @@ namespace praktika
                 Mait.nalg = 0;
                 Mait.janu = 0;
             }
-
-
         }
-
 
          static void kustuta_sisend()
         {
@@ -198,10 +186,7 @@ namespace praktika
             Console.SetCursorPosition(0, Console.CursorTop - 1);
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(0, Console.CursorTop - 1);
-
         }
-
-
 
         static void alkomyrgitus()
         {
@@ -235,7 +220,6 @@ namespace praktika
                 alkomyrgitus();
                 skoor++;
             }
-
         }
 
         static void surm()
@@ -296,11 +280,7 @@ namespace praktika
 
                 }
             }
-
             tups();
-
-
-            autosoit();
         }
         static void kehaline()
         {
@@ -408,13 +388,15 @@ namespace praktika
                     Mait.raha += 10;
                     Mait.stress += 5;
                     skoor++;
+                    Mait.tups -= 5;
                 }
                 else
                 {
-                    Console.WriteLine(" Müüsid tupsu ja jäid vahele");
+                    Console.WriteLine("Müüsid tupsu ja jäid vahele. Su kogu tups konfiskeeriti ära.");
                     Mait.raha -= 10;
                     Mait.stress += 15;
                     Mait.vasimus += 10;
+                    Mait.tups = 0;
                 }
             }
             if (key.ToUpper() == "B")
@@ -423,18 +405,6 @@ namespace praktika
                 skoor++;
             }
             autosoit();
-        }
-
-
-
-
-
-
-
-        static void WaitForKey(ConsoleKey key)
-        {
-            while (Console.ReadKey(true).Key != key)
-            { }
         }
     }
 }
