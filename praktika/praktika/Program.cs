@@ -295,7 +295,7 @@ namespace praktika
             Boolean exit = false;
             Boolean exit2 = false;
             Boolean exit3 = false;
-            Boolean exit4 = false;
+
             if (chance % 2 == 0)
             {
                 Console.WriteLine("Ei vedanud, täna oled sina rivikorrapidaja!");
@@ -424,7 +424,8 @@ namespace praktika
             int Mait_hp = 100;
             int vastane_hp = 100;
 
-            Console.WriteLine("Sul on " + Mait_hp + " HP\nVastasel on: " + vastane_hp);
+            Console.WriteLine("Sul on " + Mait_hp + " HP\nVastasel on: " + vastane_hp + " HP");
+            Console.WriteLine("Valikud:\nA-Jab\nB-Uppercut\n");
         }
     }
 }
