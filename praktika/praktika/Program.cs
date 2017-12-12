@@ -32,7 +32,7 @@ namespace praktika
 
             key = Console.ReadKey().Key.ToString();
             kustuta_sisend();
-            if (key.ToUpper() == "A") 
+            if (key.ToUpper() == "A")
             {
                 magaEdasi();
                 skoor++;
@@ -41,7 +41,7 @@ namespace praktika
             {
                 mineKooli();
                 skoor++;
-            }    
+            }
         }
 
         static void magaEdasi()
@@ -122,9 +122,10 @@ namespace praktika
             }
             else if (key.ToUpper() == "B")
             {
-                Console.WriteLine("Väga tubli! Ilma lubadeta ei tohi sõita!");  
+                Console.WriteLine("Väga tubli! Ilma lubadeta ei tohi sõita!");
             }
             kontrollinaitajaid();
+            ohtusook();
         }
 
         static void sookla()
@@ -182,7 +183,7 @@ namespace praktika
             kontrollinaitajaid();
         }
 
-         static void kustuta_sisend()
+        static void kustuta_sisend()
         {
             if (Console.CursorTop == 0) return;
             Console.SetCursorPosition(0, Console.CursorTop - 1);
@@ -414,6 +415,48 @@ namespace praktika
             }
             kontrollinaitajaid();
             autosoit();
+        }
+        static void ohtusook()
+        {
+            Console.WriteLine("Jõudsid koju. On aeg suua ohtust \nA - Lahen soon ohtust kuna koht on tuhi ja olen vasinud \nB - Ei soo ohtust kuna csi on vaja pelada");
+            if (key.ToUpper() == "A")
+                kustuta_sisend();
+            {
+                Mait.vasimus -= 5;
+                Mait.stress -= 5;
+                skoor++;
+            }
+            if (key.ToUpper() == "B")
+                kustuta_sisend();
+            {
+                Mait.vasimus += 10;
+                Mait.stress -= 5;
+                skoor++;
+            }
+            kodutood();
+        }
+        static void kodutood()
+        {
+            Console.WriteLine("Oled kodus. On aeg teha kodutoid \nA - Teen oma kodutood ara \nB - Lähen puhkama, mängin arvutiga ja vaatan telekat");
+            if (key.ToUpper() == "A")
+                kustuta_sisend();
+            {
+                Console.WriteLine("Hea too! Opetajad on homme koolis kindlasti rahul");
+                Mait.stress += 5;
+                Mait.vasimus += 5;
+                skoor++;
+            }
+            if (key.ToUpper() == "B")
+                kustuta_sisend();
+            {
+                Console.WriteLine("Pole hullu. Said volgnevusi juurde, aga samas puhkasid välja");
+                Mait.vasimus -= 5;
+                Mait.stress -= 5;
+                Mait.volgnevused += 10;
+                skoor++;
+            }
+
+
         }
     }
 }
