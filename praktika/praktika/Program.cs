@@ -79,8 +79,6 @@ namespace praktika
                 sookla();
 
             }
-
-            Console.WriteLine("Koolis on kontrolltöö!\nA - Spikerda\nB - Looda parimat)");
             kontrolltoo();
         }
         
@@ -94,8 +92,9 @@ namespace praktika
             Mait.nalg = 0;
             Mait.janu = 0;
             skoor++;
-            autosoit();
+            
         }
+
         static void autosoit()
         {
             Console.WriteLine("Koolipäev on läbi ja ktte on jõudnud õhtu\nKas sa tahad minna ilma lubadeta autoga sõitma? \nA - Lähen sõitma!\nB - Ei lähe sõitma");
@@ -114,13 +113,12 @@ namespace praktika
                     Console.WriteLine("Vedas, ei jäänud vahele!");
                     skoor++;
                 }
-                if (key.ToUpper() == "B")
-                {
-                    Console.WriteLine("Väga tubli! Ilma lubadeta ei tohi sõita!");
-                    skoor++;
-                }
             }
-
+            else if (key.ToUpper() == "B")
+            {
+                Console.WriteLine("Väga tubli! Ilma lubadeta ei tohi sõita!");
+                skoor++;
+            }
         }
 
         static void sookla()
@@ -138,7 +136,7 @@ namespace praktika
                 {
                     if (Mait.volgnevused <= 5)
                     {
-                        Console.WriteLine("Oskad vene keelt hästi, saad süüa!");
+                        Console.WriteLine("\nOskad vene keelt hästi, saad süüa!");
                         skoor++;
                     }
                     else
@@ -244,6 +242,7 @@ namespace praktika
 
         static void kontrolltoo()
         {
+            Console.WriteLine("Koolis on kontrolltöö!\nA - Spikerda\nB - Looda parimat");
             key = Console.ReadKey().Key.ToString();
             if (key.ToUpper() == "A")
             {
@@ -274,6 +273,7 @@ namespace praktika
                     Mait.volgnevused += 15;
                 }
             }
+            autosoit();
         }
 
         static void WaitForKey(ConsoleKey key)
