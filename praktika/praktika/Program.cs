@@ -28,11 +28,11 @@ namespace praktika
             Mait.promill = 0;
 
 
-            Console.WriteLine("Täna lähme kooli.\nVajuta: \nA - maga edasi\nB - mine kooli");
+            Console.WriteLine("Täna lähme kooli.\nVajuta: \nA - maga edasi\nB - mine kooli\n");
 
             key = Console.ReadKey().Key.ToString();
             kustuta_sisend();
-            if (key.ToUpper() == "A")
+            if (key.ToUpper() == "A") 
             {
                 magaEdasi();
                 skoor++;
@@ -42,7 +42,7 @@ namespace praktika
                 mineKooli();
                 skoor++;
             }
-            Console.ReadLine();
+            
         }
 
         static void magaEdasi()
@@ -65,12 +65,12 @@ namespace praktika
             kontrollinaitajaid();
 
 
-            Console.WriteLine("Jõudsid kooli ja õpetaja andis rühmat tunnitöö.\nA - Tee kaasa\nB - Mängi growtopiat");
+            Console.WriteLine("Jõudsid kooli ja õpetaja andis rühmatunnitöö.\nA - Tee kaasa\nB - Mängi growtopiat\n");
             tunnitoo();
 
 
 
-            Console.WriteLine("On söögi vahetund.\nA - Lähed toitlustusasutusse Hesburger\nB - Lähed sööklasse");
+            Console.WriteLine("On söögi vahetund.\nA - Lähed toitlustusasutusse Hesburger\nB - Lähed sööklasse\n");
             key = Console.ReadKey().Key.ToString();
             kustuta_sisend();
             if (key.ToUpper() == "A")
@@ -109,7 +109,7 @@ namespace praktika
 
         static void autosoit()
         {
-            Console.WriteLine("Koolipäev on läbi ja ktte on jõudnud õhtu\nKas sa tahad minna ilma lubadeta autoga sõitma? \nA - Lähen sõitma!\nB - Ei lähe sõitma");
+            Console.WriteLine("\nKoolipäev on läbi ja kätte on jõudnud õhtu\nKas sa tahad minna ilma lubadeta autoga sõitma? \nA - Lähen sõitma!\nB - Ei lähe sõitma\n");
             key = Console.ReadKey().Key.ToString();
             kustuta_sisend();
             if (key.ToUpper() == "A")
@@ -117,20 +117,20 @@ namespace praktika
                 int chance = rnd.Next(1, 100);
                 if (chance % 2 == 0)
                 {
-                    Console.WriteLine("Jäid Politseile vahele, huligaan!");
+                    Console.WriteLine("\nJäid Politseile vahele, huligaan!");
                     Mait.stress += 30;
                     Mait.raha = 0;
                 }
                 else
                 {
-                    Console.WriteLine("Vedas, ei jäänud vahele!");
+                    Console.WriteLine("\nVedas, ei jäänud vahele!");
                     skoor++;
                 }
             }
             else if (key.ToUpper() == "B")
             {
                 Console.WriteLine("Väga tubli! Ilma lubadeta ei tohi sõita!");
-                skoor++;
+                
             }
         }
 
@@ -143,7 +143,7 @@ namespace praktika
             {
                 Console.WriteLine("Jätsid kaardi koju lollpea!");
                 Mait.stress += 10;
-                Console.WriteLine("A - Räägi söögitädiga\nB - Osta puhvetist toitu\nC - Mine ikka Hesburgerisse");
+                Console.WriteLine("A - Räägi söögitädiga\nB - Osta puhvetist toitu\nC - Mine ikka Hesburgerisse\n");
                 key = Console.ReadKey().Key.ToString();
                 kustuta_sisend();
                 if (key.ToUpper() == "A")
@@ -192,7 +192,7 @@ namespace praktika
         }
 
 
-        private static void kustuta_sisend()
+         static void kustuta_sisend()
         {
             if (Console.CursorTop == 0) return;
             Console.SetCursorPosition(0, Console.CursorTop - 1);
