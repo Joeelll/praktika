@@ -149,7 +149,7 @@ namespace praktika
                     }
                     else
                     {
-                        Console.WriteLine("Mait: Izvinite u menja kartochka njetu!\nSöögitädi: Kartochka net, edy net!");
+                        Console.WriteLine("\nMait: Izvinite u menja kartochka njetu!\nSöögitädi: Kartochka net, edy net!");
                         Mait.nalg += 20;
                         Mait.janu += 10;
                     }
@@ -253,7 +253,7 @@ namespace praktika
 
         static void kontrolltoo()
         {
-            Console.WriteLine("Koolis on kontrolltöö!\nA - Spikerda\nB - Looda parimat");
+            Console.WriteLine("\nKoolis on kontrolltöö!\nA - Spikerda\nB - Looda parimat");
             key = Console.ReadKey().Key.ToString();
             kustuta_sisend();
             if (key.ToUpper() == "A")
@@ -296,7 +296,7 @@ namespace praktika
             Boolean exit = false;
             Boolean exit2 = false;
             Boolean exit3 = false;
-            Boolean exit4 = false;
+
             if (chance % 2 == 0)
             {
                 Console.WriteLine("Ei vedanud, täna oled sina rivikorrapidaja!");
@@ -377,6 +377,10 @@ namespace praktika
                     }
                 }
             }
+            else
+            {
+                Console.WriteLine("Vedas, mingi teine lollpea peab korrapidaja olema!");
+            }
             kontrollinaitajaid();
             autosoit();
         }
@@ -416,6 +420,7 @@ namespace praktika
             kontrollinaitajaid();
             autosoit();
         }
+
         static void ohtusook()
         {
             Console.WriteLine("Jõudsid koju. On aeg suua ohtust \nA - Lahen soon ohtust kuna koht on tuhi ja olen vasinud \nB - Ei soo ohtust kuna csi on vaja pelada");
@@ -458,8 +463,18 @@ namespace praktika
 
 
         }
+            static void fight()
+            {
+                int Mait_hp = 100;
+                int vastane_hp = 100;
+
+                Console.WriteLine("Sul on " + Mait_hp + " HP\nVastasel on: " + vastane_hp + " HP");
+                Console.WriteLine("Valikud:\nA-Jab\nB-Uppercut\n");
+
+            }
+        }
     }
-}
+
 
 
 
