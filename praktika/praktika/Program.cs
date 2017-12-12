@@ -27,9 +27,11 @@ namespace praktika
             Mait.stress = 0;
             Mait.promill = 0;
 
+
             Console.WriteLine("Täna lähme kooli.\nVajuta: \nA - maga edasi\nB - mine kooli");
 
             key = Console.ReadKey().Key.ToString();
+            kustuta_sisend();
             if (key.ToUpper() == "A")
             {
                 magaEdasi();
@@ -63,13 +65,14 @@ namespace praktika
             kontrollinaitajaid();
 
 
-            Console.WriteLine("Jõudsid kooli ja õpetaja andis rühmat tunnitöö.\nA - Tee kaasa\nB - Mängi growtopiat)");
+            Console.WriteLine("Jõudsid kooli ja õpetaja andis rühmat tunnitöö.\nA - Tee kaasa\nB - Mängi growtopiat");
             tunnitoo();
             
             
 
             Console.WriteLine("On söögi vahetund.\nA - Lähed toitlustusasutusse Hesburger\nB - Lähed sööklasse");
             key = Console.ReadKey().Key.ToString();
+            kustuta_sisend();
             if (key.ToUpper() == "A")
             {
                 hessi();
@@ -79,7 +82,16 @@ namespace praktika
                 sookla();
 
             }
-            kontrolltoo();
+            int chance = rnd.Next(1, 100);
+            if (chance % 2 == 0)
+            {
+                kehaline();
+            }
+            else
+            {
+                kontrolltoo();
+            }
+            
         }
         
 
@@ -99,6 +111,7 @@ namespace praktika
         {
             Console.WriteLine("Koolipäev on läbi ja ktte on jõudnud õhtu\nKas sa tahad minna ilma lubadeta autoga sõitma? \nA - Lähen sõitma!\nB - Ei lähe sõitma");
             key = Console.ReadKey().Key.ToString();
+            kustuta_sisend();
             if (key.ToUpper() == "A")
             {
                 int chance = rnd.Next(1, 100);
@@ -132,6 +145,7 @@ namespace praktika
                 Mait.stress += 10;
                 Console.WriteLine("A - Räägi söögitädiga\nB - Osta puhvetist toitu\nC - Mine ikka Hesburgerisse");
                 key = Console.ReadKey().Key.ToString();
+                kustuta_sisend();
                 if (key.ToUpper() == "A")
                 {
                     if (Mait.volgnevused <= 5)
@@ -174,14 +188,20 @@ namespace praktika
                 Mait.janu = 0;
             }
         
-}    
-       
-        
-
-    
+}
 
 
-        
+        private static void kustuta_sisend()
+        {
+            if (Console.CursorTop == 0) return;
+            Console.SetCursorPosition(0, Console.CursorTop - 1);
+            Console.Write(new string(' ', Console.WindowWidth));
+            Console.SetCursorPosition(0, Console.CursorTop - 1);
+        }
+
+
+
+
 
         static void alkomyrgitus()
         {
@@ -226,6 +246,7 @@ namespace praktika
         static void tunnitoo()
         {
             key = Console.ReadKey().Key.ToString();
+            kustuta_sisend();
             if (key.ToUpper() == "A")
             {
                 Console.WriteLine("\nOled tubli tuupur, õppisid Dell'i manuaali pähe!");
@@ -244,6 +265,7 @@ namespace praktika
         {
             Console.WriteLine("Koolis on kontrolltöö!\nA - Spikerda\nB - Looda parimat");
             key = Console.ReadKey().Key.ToString();
+            kustuta_sisend();
             if (key.ToUpper() == "A")
             {
                 int chance = rnd.Next(1, 100);
@@ -274,6 +296,99 @@ namespace praktika
                 }
             }
             autosoit();
+        }
+        static void kehaline()
+        {
+            Console.WriteLine("\nAlgab kehalise tund!");
+            int chance = rnd.Next(1, 100);
+            Boolean exit = false;
+            Boolean exit2 = false;
+            Boolean exit3 = false;
+            Boolean exit4 = false;
+            if (chance % 2 == 0)
+            {
+                Console.WriteLine("Ei vedanud, täna oled sina rivikorrapidaja!");
+                while (exit == false)
+                {
+                    Console.WriteLine("Alustad korrapidamist käsuga: \nA-Rühm joonele kogu\nB-Joondu\nC-Keskele vaat\nD-Valvel");
+                    key = Console.ReadKey().Key.ToString();
+                    kustuta_sisend();
+                    if (key.ToUpper() == "A")
+                    {
+                        Console.WriteLine("\nKalle on rõõmus, õige käsk!");
+                        while (exit2 == false)
+                        {
+                            Console.WriteLine("Järgmine käsk on: \nA-Joondu\nB-Keskele vaat\nC-Valvel");
+                            key = Console.ReadKey().Key.ToString();
+                            kustuta_sisend();
+                            if (key.ToUpper() == "A")
+                            {
+                                Console.WriteLine("\nKalle on rõõmus, õige käsk!");
+                                while (exit3 == false)
+                                {
+                                    Console.WriteLine("Järmine käsk on: \nA-Keskele vaat\nB-Valvel");
+                                    key = Console.ReadKey().Key.ToString();
+                                    kustuta_sisend();
+                                    if (key.ToUpper() == "A")
+                                    {
+                                        Console.WriteLine("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
+                                        Mait.stress += 5;
+                                        Mait.vasimus += 5;
+                                    }
+                                    else if (key.ToUpper() == "B")
+                                    {
+                                        Console.WriteLine("\nKalle on rõõmus, õige käsk!");
+                                        Console.WriteLine("Keskele vaat!");
+                                        exit = true;
+                                        exit2 = true;
+                                        exit3 = true;
+                                    }
+                                }
+                            }
+                            else if (key.ToUpper() == "B")
+                            {
+                                Console.WriteLine("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
+                                Mait.stress += 5;
+                                Mait.vasimus += 5;
+                            }
+                            else if (key.ToUpper() == "C")
+                            {
+                                Console.WriteLine("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
+                                Mait.stress += 5;
+                                Mait.vasimus += 5;
+                            }
+                        }
+                    }
+                    else if (key.ToUpper() == "B")
+                    {
+                        Console.WriteLine("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
+                        Mait.stress += 5;
+                        Mait.vasimus += 5;
+                    }
+                    else if (key.ToUpper() == "C")
+                    {
+                        Console.WriteLine("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
+                        Mait.stress += 5;
+                        Mait.vasimus += 5;
+                    }
+                    else if (key.ToUpper() == "C")
+                    {
+                        Console.WriteLine("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
+                        Mait.stress += 5;
+                        Mait.vasimus += 5;
+                    }
+                    else if (key.ToUpper() == "D")
+                    {
+                        Console.WriteLine("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
+                        Mait.stress += 5;
+                        Mait.vasimus += 5;
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Vedas! Keegi teine lollpea on rivikorrapidaja. Oled terve tunni telefonis jõusaalis!");
+            }
         }
 
         static void WaitForKey(ConsoleKey key)
