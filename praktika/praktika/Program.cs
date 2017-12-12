@@ -15,8 +15,8 @@ namespace praktika
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Vajuta Y, et käivitada mäng");
-            WaitForKey(ConsoleKey.Y);
+            Console.WriteLine("Vajuta pohhuilt nuppu, et käivitada mäng");
+            Console.ReadKey(true);
 
             Mait = new opilane();
             Mait.raha = 10;
@@ -27,7 +27,7 @@ namespace praktika
             Mait.stress = 0;
             Mait.promill = 0;
 
-            Console.WriteLine("Täna lähme kooli. \nVajuta A - maga edasi\n       B- mine kooli");
+            Console.WriteLine("Täna lähme kooli.\nVajuta: \nA - maga edasi\nB - mine kooli");
 
             key = Console.ReadKey().Key.ToString();
             if (key.ToUpper() == "A")
@@ -63,12 +63,12 @@ namespace praktika
             kontrollinaitajaid();
 
 
-            Console.WriteLine("Tunnitöö: (A-Tee kaasa/B-Mängi growtopiat)");
+            Console.WriteLine("Jõudsid kooli ja õpetaja andis rühmat tunnitöö.\nA - Tee kaasa\nB - Mängi growtopiat)");
             tunnitoo();
             
             
 
-            Console.WriteLine("On söögi vahetund.\n A- lähed hessi\n B- lähed sööklasse");
+            Console.WriteLine("On söögi vahetund.\nA - Lähed toitlustusasutusse Hesburger\nB - Lähed sööklasse");
             key = Console.ReadKey().Key.ToString();
             if (key.ToUpper() == "A")
             {
@@ -80,7 +80,7 @@ namespace praktika
 
             }
 
-            Console.WriteLine("Koolis on kontrolltöö! (A-Spikerda/B-Looda parimat)");
+            Console.WriteLine("Koolis on kontrolltöö!\nA - Spikerda\nB - Looda parimat)");
             kontrolltoo();
         }
         
@@ -88,8 +88,7 @@ namespace praktika
         static void hessi()
         {
 
-            Console.WriteLine("\nLähen Hessi!");
-            Console.WriteLine("Hessis on järjekord, jääd tundi hiljaks!");
+            Console.WriteLine("Lähen Hessi!\nHessis on järjekord, jääd tundi hiljaks!");
             Mait.vasimus = 5;
             Mait.volgnevused = 10;
             Mait.nalg = 0;
@@ -99,20 +98,20 @@ namespace praktika
         }
         static void autosoit()
         {
-            Console.WriteLine("Kas sa tahad peale hessi ilma lubadeta autoga sõita? \n A- Lähen sõitma!\n B- Ei lähe sõitma");
+            Console.WriteLine("Koolipäev on läbi ja ktte on jõudnud õhtu\nKas sa tahad minna ilma lubadeta autoga sõitma? \nA - Lähen sõitma!\nB - Ei lähe sõitma");
             key = Console.ReadKey().Key.ToString();
             if (key.ToUpper() == "A")
             {
                 int chance = rnd.Next(1, 100);
                 if (chance % 2 == 0)
                 {
-                    Console.WriteLine("-Jäid Politseile vahele!");
+                    Console.WriteLine("Jäid Politseile vahele, huligaan!");
                     Mait.stress += 30;
                     Mait.raha = 0;
                 }
                 else
                 {
-                    Console.WriteLine("-Vedas, ei jäänud vahele!");
+                    Console.WriteLine("Vedas, ei jäänud vahele!");
                     skoor++;
                 }
                 if (key.ToUpper() == "B")
@@ -126,25 +125,25 @@ namespace praktika
 
         static void sookla()
         {
-            Console.WriteLine("\nLähed sööklasse!" + "\nKontrollid, kas kaardi võtsid.");
+            Console.WriteLine("\nLähed sööklasse!\nKontrollid, kas kaardi võtsid.");
             int chance = rnd.Next(1, 100);
             System.Threading.Thread.Sleep(2000);
             if (chance % 2 == 0)
             {
                 Console.WriteLine("Jätsid kaardi koju lollpea!");
                 Mait.stress += 10;
-                Console.WriteLine("\nA-Räägi söögitädiga/B-Osta puhvetist toitu/C-Mine ikka hessi");
+                Console.WriteLine("A - Räägi söögitädiga\nB - Osta puhvetist toitu\nC - Mine ikka Hesburgerisse");
                 key = Console.ReadKey().Key.ToString();
                 if (key.ToUpper() == "A")
                 {
                     if (Mait.volgnevused <= 5)
                     {
-                        Console.WriteLine("\nOskad vene keelt hästi, saad süüa!");
+                        Console.WriteLine("Oskad vene keelt hästi, saad süüa!");
                         skoor++;
                     }
                     else
                     {
-                    Console.WriteLine("\nMina: Izvinite u menja kartochka njetu!" + "\nSöögitädi: Kartochka net, edy net!");
+                    Console.WriteLine("Mait: Izvinite u menja kartochka njetu!\nSöögitädi: Kartochka net, edy net!");
                     Mait.nalg += 20;
                     Mait.janu += 10;
                     }
@@ -154,12 +153,12 @@ namespace praktika
                     if (Mait.raha <= 5)
                     {
                         Mait.raha -= 5;
-                        Console.WriteLine("\nSööd kuivanud kooli pitsat! Gurmee!");
+                        Console.WriteLine("Sööd kuivanud kooli pitsat! Gurmee!");
                         Mait.stress += 5;
                     }
                     else
                     {
-                        Console.WriteLine("\nSa oled rahadega põhjas. Jood teed ja varastad leiba!");
+                        Console.WriteLine("Sa oled rahadega põhjas. Jood teed ja varastad leiba!");
                         Mait.nalg += 15;
                         Mait.janu -= 5;
                     }
@@ -168,15 +167,21 @@ namespace praktika
                 {
                     hessi();
                 }
+
             }
             else
             {
-                Console.WriteLine("Kaart on olemas, täna saab süüa");
+                Console.WriteLine("Kaart on olemas, täna saab süüa.");
                 Mait.nalg = 0;
                 Mait.janu = 0;
             }
-            
-}
+        
+}    
+       
+        
+
+    
+
 
         
 
@@ -217,7 +222,7 @@ namespace praktika
         
         static void surm()
         {
-            Console.WriteLine("Mäng on läbi, surid ära. Skoor on: " + skoor);
+            Console.WriteLine("\nMäng on läbi, surid ära. Skoor on: " + skoor);
         }
 
         static void tunnitoo()
@@ -281,13 +286,5 @@ namespace praktika
 
 
 
-
-
-
-
-
-
-
-
-
+    
 
