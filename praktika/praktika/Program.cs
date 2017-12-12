@@ -383,14 +383,15 @@ namespace praktika
 
         static void tups()
         {
-            Console.WriteLine("Lähed peale kooli raha teenima tupsu müümisega? \n-A Lähen müüma, sest raha on vaja. \n-B Ei lähe müüma, raha on piisavalt praegu. ");
+            Console.WriteLine("Lähed peale kooli raha teenima tupsu müümisega?\nA - Lähen müüma, sest raha on vaja.\nB - Ei lähe müüma, raha on piisavalt praegu. ");
             key = Console.ReadKey().Key.ToString();
             if (key.ToUpper() == "A")
+                kustuta_sisend();
             {
                 int chance = rnd.Next(1, 100);
                 if (chance % 2 == 0)
                 {
-                    Console.WriteLine(" Müüsid tupsu ja ei jäänud vahele. Vedas!");
+                    Console.WriteLine("Müüsid tupsu ja ei jäänud vahele. Vedas!");
                     Mait.raha += 10;
                     Mait.stress += 5;
                     skoor++;
@@ -406,6 +407,7 @@ namespace praktika
                 }
             }
             if (key.ToUpper() == "B")
+                kustuta_sisend();
             {
                 Console.WriteLine("Tubli! Tupsu ei tohigi müüa");
                 skoor++;
