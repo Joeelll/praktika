@@ -91,7 +91,7 @@ namespace praktika
             {
                 kontrolltoo();
             }
-            
+
         }
 
 
@@ -104,7 +104,7 @@ namespace praktika
             Mait.nalg = 0;
             Mait.janu = 0;
             skoor++;
-            
+
         }
 
         static void autosoit()
@@ -187,17 +187,9 @@ namespace praktika
                 Mait.nalg = 0;
                 Mait.janu = 0;
             }
-<<<<<<< HEAD
+
 
         }
-
-
-
-
-
-=======
-        
-}
 
 
         private static void kustuta_sisend()
@@ -206,10 +198,8 @@ namespace praktika
             Console.SetCursorPosition(0, Console.CursorTop - 1);
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(0, Console.CursorTop - 1);
+
         }
-
-
->>>>>>> f812d7ac2fab1b4b948c77692db1cd240780450a
 
 
 
@@ -303,13 +293,13 @@ namespace praktika
                     Console.WriteLine("\nSaid kahe! Lollpea, mida sa üritad!");
                     Mait.stress += 10;
                     Mait.volgnevused += 15;
-                    
+
                 }
             }
-<<<<<<< HEAD
+
             tups();
-        
-=======
+
+
             autosoit();
         }
         static void kehaline()
@@ -400,12 +390,10 @@ namespace praktika
                     }
                 }
             }
-            else
-            {
-                Console.WriteLine("Vedas! Keegi teine lollpea on rivikorrapidaja. Oled terve tunni telefonis jõusaalis!");
-            }
->>>>>>> f812d7ac2fab1b4b948c77692db1cd240780450a
+
+            autosoit();
         }
+
 
         static void tups()
         {
@@ -434,6 +422,7 @@ namespace praktika
                 Console.WriteLine("Tubli! Tupsu ei tohigi müüa");
                 skoor++;
             }
+            autosoit();
         }
 
 
