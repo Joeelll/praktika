@@ -110,19 +110,19 @@ namespace praktika
                 int chance = rnd.Next(1, 100);
                 if (chance % 2 == 0)
                 {
-                    Console.WriteLine("\nJäid Politseile vahele, huligaan!");
+                    Console.WriteLine("\nJäid Politseile vahele, huligaan!\n");
                     Mait.stress += 30;
                     Mait.raha = 0;
                 }
                 else
                 {
-                    Console.WriteLine("\nVedas, ei jäänud vahele!");
+                    Console.WriteLine("\nVedas, ei jäänud vahele!\n");
                     skoor++;
                 }
             }
             else if (key.ToUpper() == "B")
             {
-                Console.WriteLine("Väga tubli! Ilma lubadeta ei tohi sõita!");
+                Console.WriteLine("Väga tubli! Ilma lubadeta ei tohi sõita!\n");
             }
             kontrollinaitajaid();
             ohtusook();
@@ -156,6 +156,7 @@ namespace praktika
                 }
                 else if (key.ToUpper() == "B")
                 {
+                    kustuta_sisend();
                     if (Mait.raha >= 5)
                     {
                         Mait.raha -= 5;
@@ -239,7 +240,7 @@ namespace praktika
             if (key.ToUpper() == "A")
             {
                 Console.WriteLine("\nOled tubli tuupur, õppisid Dell'i manuaali pähe!");
-                Mait.stress += 10;
+                Mait.vasimus += 10;
             }
             else if (key.ToUpper() == "B")
             {
@@ -253,7 +254,7 @@ namespace praktika
 
         static void kontrolltoo()
         {
-            Console.WriteLine("\nKoolis on kontrolltöö!\nA - Spikerda\nB - Looda parimat");
+            Console.WriteLine("\nKoolis on kontrolltöö!\nA - Spikerda\nB - Looda parimat\n");
             key = Console.ReadKey().Key.ToString();
             kustuta_sisend();
             if (key.ToUpper() == "A")
@@ -302,7 +303,7 @@ namespace praktika
                 Console.WriteLine("Ei vedanud, täna oled sina rivikorrapidaja!");
                 while (exit == false)
                 {
-                    Console.WriteLine("Alustad korrapidamist käsuga: \nA-Rühm joonele kogu\nB-Joondu\nC-Keskele vaat\nD-Valvel");
+                    Console.WriteLine("\nAlustad korrapidamist käsuga: \nA-Rühm joonele kogu\nB-Joondu\nC-Keskele vaat\nD-Valvel");
                     key = Console.ReadKey().Key.ToString();
                     kustuta_sisend();
                     if (key.ToUpper() == "A")
@@ -334,6 +335,7 @@ namespace praktika
                                         exit = true;
                                         exit2 = true;
                                         exit3 = true;
+                                        Console.WriteLine("Tund saab läbi.");
                                     }
                                 }
                             }
@@ -379,7 +381,9 @@ namespace praktika
             }
             else
             {
-                Console.WriteLine("Vedas, mingi teine lollpea peab korrapidaja olema!");
+                Console.WriteLine("Vedas, mingi teine lollpea peab korrapidaja olema!\nIstud jõusaalis ja mängid growtopiat!");
+                System.Threading.Thread.Sleep(2000);
+                Console.WriteLine("Tund saab läbi.");
             }
             kontrollinaitajaid();
             autosoit();
@@ -388,11 +392,12 @@ namespace praktika
 
         static void tups()
         {
-            Console.WriteLine("Lähed peale kooli raha teenima tupsu müümisega?\nA - Lähen müüma, sest raha on vaja.\nB - Ei lähe müüma, raha on piisavalt praegu. ");
+            Console.WriteLine("Lähed peale kooli raha teenima tupsu müümisega?\nA - Lähen müüma, sest raha on vaja.\nB - Ei lähe müüma, raha on piisavalt praegu.\n");
             key = Console.ReadKey().Key.ToString();
+            kustuta_sisend();   
             if (key.ToUpper() == "A")
-                kustuta_sisend();
             {
+                
                 int chance = rnd.Next(1, 100);
                 if (chance % 2 == 0)
                 {
@@ -411,9 +416,9 @@ namespace praktika
                     Mait.tups = 0;
                 }
             }
-            if (key.ToUpper() == "B")
-                kustuta_sisend();
+            else if (key.ToUpper() == "B")
             {
+                kustuta_sisend();
                 Console.WriteLine("Tubli! Tupsu ei tohigi müüa");
                 skoor++;
             }
@@ -423,7 +428,8 @@ namespace praktika
 
         static void ohtusook()
         {
-            Console.WriteLine("Jõudsid koju. On aeg suua ohtust \nA - Lahen soon ohtust kuna koht on tuhi ja olen vasinud \nB - Ei soo ohtust kuna csi on vaja pelada");
+            Console.WriteLine("\nOled jõudnud koju. On aeg suua ohtust \nA - Lahen soon ohtust kuna koht on tuhi ja olen vasinud \nB - Ei soo ohtust kuna csi on vaja pelada\n");
+            key = Console.ReadKey().Key.ToString();
             if (key.ToUpper() == "A")
                 kustuta_sisend();
             {
@@ -439,10 +445,12 @@ namespace praktika
                 skoor++;
             }
             kodutood();
+            
         }
         static void kodutood()
         {
-            Console.WriteLine("Oled kodus. On aeg teha kodutoid \nA - Teen oma kodutood ara \nB - Lähen puhkama, mängin arvutiga ja vaatan telekat");
+            key = Console.ReadKey().Key.ToString();
+            Console.WriteLine("\nNüüd oleks aeg teha kodutoid \nA - Teen oma kodutood ara \nB - Lähen puhkama, mängin arvutiga ja vaatan telekat");
             if (key.ToUpper() == "A")
                 kustuta_sisend();
             {
@@ -460,7 +468,6 @@ namespace praktika
                 Mait.volgnevused += 10;
                 skoor++;
             }
-
 
         }
             static void fight()
