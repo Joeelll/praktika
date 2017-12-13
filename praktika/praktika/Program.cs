@@ -568,9 +568,32 @@ namespace praktika
                 Mait.volgnevused += 10;
                 skoor++;
             }
-
+            magamine();
         }
+        static void magamine()
+        {
+            Console.WriteLine("\nKell on palju. On age magama minna \nA - Lähen magama \nB - Ei lähe magama ja pelan terve öö csi");
+            key = Console.ReadKey().Key.ToString();
+            kustuta_sisend();
+            if (key.ToUpper() == "A")
+            {
+                Console.WriteLine(" Läksid magama, puhkad välja");
+                Mait.vasimus -= 10;
+                Mait.stress -= 5;
+                Mait.nalg += 5;
+                Mait.janu += 5;
+                skoor++;
+            }
+            if (key.ToUpper() == "B")
+            {
+                Console.WriteLine("Pelasid terve öö csi ja oled nüüd väga väsinud");
+                Mait.vasimus += 20;
+                Mait.nalg += 10;
+                Mait.janu += 10;
+                skoor++;
+            }
         }
+    }
     }
 
 
