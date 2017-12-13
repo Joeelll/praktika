@@ -109,7 +109,7 @@ namespace praktika
 
         static void autosoit()
         {
-            Console.WriteLine("\nKoolipäev on läbi ja kätte on jõudnud õhtu\nKas sa tahad minna ilma lubadeta autoga sõitma? \nA - Lähen sõitma!\nB - Ei lähe sõitma\n");
+            Console.WriteLine("\nKoolipäev on läbi ja kätte on jõudnud õhtu\nKas sa tahad minna ilma lubadeta autoga sõitma? \nA - Lähen sõitma.\nB - Ei lähe sõitma.\n");
             key = Console.ReadKey().Key.ToString();
             
             if (key.ToUpper() == "A")
@@ -118,21 +118,21 @@ namespace praktika
                 if (chance % 2 == 0)
                 {
                     kustuta_sisend();
-                    Console.WriteLine("\nJäid Politseile vahele, huligaan!");
+                    Console.WriteLine("\nJäid Politseile vahele, huligaan! Ema on jube vihane ja said protokolli.");
                     Mait.stress += 30;
                     Mait.raha = 0;
                 }
                 else
                 {
                     kustuta_sisend();
-                    Console.WriteLine("\nVedas, ei jäänud vahele!");
+                    Console.WriteLine("\nVedas, ei jäänud vahele.");
                     skoor++;
                 }
             }
             else if (key.ToUpper() == "B")
             {
                 kustuta_sisend();
-                Console.WriteLine("\nVäga tubli! Ilma lubadeta ei tohi sõita!\n");
+                Console.WriteLine("\nVäga tubli! Ilma lubadeta ei tohi sõita.\n");
             }
             kontrollinaitajaid();
             ohtusook();
@@ -277,7 +277,7 @@ namespace praktika
                 }
                 else
                 {
-                    Console.WriteLine("\nJäid vahele, sa vana spikerdaja!");
+                    Console.WriteLine("\nJäid vahele, sa vana spikerdaja! Pead töö uuesti tegema.");
                     Mait.stress += 10;
                     Mait.volgnevused += 15;
                 }
@@ -409,7 +409,7 @@ namespace praktika
             {
                 
                 int chance = rnd.Next(1, 100);
-                if (chance >= 1 && chance <= 30)
+                if (chance >= 1 && chance <= 15)
                 {
                     Console.WriteLine("\nJäid politseile vahele! Õnneks nad ei vaadanud su kotti, enamik torni jäi alles. Said trahvi pealekauba.");
                     Mait.tups -= 5;
@@ -459,7 +459,7 @@ namespace praktika
             kustuta_sisend();
             if (key.ToUpper() == "A")
             {
-                Console.WriteLine("Hea too! Õpetajad on homme koolis kindlasti rahul");
+                Console.WriteLine("\nHea too! Õpetajad on homme koolis kindlasti rahul");
                 Mait.stress += 10;
                 Mait.vasimus += 10;
                 Mait.volgnevused -= 10;
@@ -467,7 +467,7 @@ namespace praktika
             }
             if (key.ToUpper() == "B")       
             {
-                Console.WriteLine("Pole hullu. Said võlgnevusi juurde, aga puhkasid välja");
+                Console.WriteLine("\nPole hullu. Said võlgnevusi juurde, aga puhkasid välja");
                 Mait.vasimus -= 10;
                 Mait.stress -= 10;
                 Mait.volgnevused += 10;
