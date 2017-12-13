@@ -15,6 +15,12 @@ namespace praktika
 
         static void Main(string[] args)
         {
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Clear();
+
+
+            Console.Title = "MÄNG MAIDU ELUST!";
             Console.WriteLine("Vajuta pohhuilt nuppu, et käivitada mäng");
             Console.ReadKey(true);
 
