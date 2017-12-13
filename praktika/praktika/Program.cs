@@ -274,6 +274,7 @@ namespace praktika
             kustuta_sisend();
             if (key.ToUpper() == "A")
             {
+                Console.Clear();
                 game();
             }
             else if (key.ToUpper() == "B")
