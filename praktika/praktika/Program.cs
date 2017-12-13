@@ -152,6 +152,7 @@ namespace praktika
             ohtusook();
         }
 
+
         static void sookla()
         {
             Console.WriteLine("\nLähed sööklasse!\nKontrollid, kas kaardi võtsid.");
