@@ -583,6 +583,24 @@ namespace praktika
                 Mait.nalg += 5;
                 Mait.janu += 5;
                 skoor++;
+                Mait = new opilane();
+                Mait.raha = 10;
+                Console.WriteLine("\nSul on raha: " + Mait.raha);
+                Mait.nalg = 0;
+                Console.WriteLine("Su nälg on hetkel: " + Mait.nalg);
+                Mait.janu = 0;
+                Console.WriteLine("Su janu on: " + Mait.janu);
+                Mait.vasimus = 15;
+                Console.WriteLine("Väsimus on: " + Mait.vasimus);
+                Mait.volgnevused = 0;
+                Console.WriteLine("Võlgnevuste suurus on: " + Mait.volgnevused);
+                Mait.stress = 0;
+                Console.WriteLine("Stressinäitaja on: " + Mait.stress);
+                Mait.promill = 0;
+                Console.WriteLine("Joobeseisund on " + Mait.promill + " promilli.");
+                Mait.tups = 10;
+                Console.WriteLine("\nNMÄNG LÄBI!");
+
             }
             if (key.ToUpper() == "B")
             {
@@ -591,7 +609,25 @@ namespace praktika
                 Mait.nalg += 10;
                 Mait.janu += 10;
                 skoor++;
+                Mait = new opilane();
+                Mait.raha = 10;
+                Console.WriteLine("\nSul on raha: " + Mait.raha);
+                Mait.nalg = 0;
+                Console.WriteLine("Su nälg on hetkel: " + Mait.nalg);
+                Mait.janu = 0;
+                Console.WriteLine("Su janu on: " + Mait.janu);
+                Mait.vasimus = 15;
+                Console.WriteLine("Väsimus on: " + Mait.vasimus);
+                Mait.volgnevused = 0;
+                Console.WriteLine("Võlgnevuste suurus on: " + Mait.volgnevused);
+                Mait.stress = 0;
+                Console.WriteLine("Stressinäitaja on: " + Mait.stress);
+                Mait.promill = 0;
+                Console.WriteLine("Joobeseisund on " + Mait.promill + " promilli.");
+                Mait.tups = 10;
+                Console.WriteLine("\nMÄNG LÄBI!");
             }
+            Console.ReadKey();
         }
     }
     }
