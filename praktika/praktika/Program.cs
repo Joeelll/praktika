@@ -572,12 +572,12 @@ namespace praktika
         }
         static void magamine()
         {
-            Console.WriteLine("\nKell on palju. On age magama minna \nA - Lähen magama \nB - Ei lähe magama ja pelan terve öö csi");
+            Console.WriteLine("\nKell on palju. On age magama minna \nA - Lähen magama \nB - Ei lähe magama ja pelan terve öö csi\n");
             key = Console.ReadKey().Key.ToString();
             kustuta_sisend();
             if (key.ToUpper() == "A")
             {
-                Console.WriteLine(" Läksid magama, puhkad välja");
+                Console.WriteLine("\nLäksid magama, puhkad välja.");
                 Mait.vasimus -= 10;
                 Mait.stress -= 5;
                 Mait.nalg += 5;
@@ -586,7 +586,7 @@ namespace praktika
             }
             if (key.ToUpper() == "B")
             {
-                Console.WriteLine("Pelasid terve öö csi ja oled nüüd väga väsinud");
+                Console.WriteLine("\nPelasid terve öö csi ja oled nüüd väga väsinud.");
                 Mait.vasimus += 20;
                 Mait.nalg += 10;
                 Mait.janu += 10;
