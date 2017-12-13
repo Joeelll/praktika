@@ -20,15 +20,22 @@ namespace praktika
 
             Mait = new opilane();
             Mait.raha = 10;
+            Console.WriteLine("Sul on raha: " + Mait.raha);
             Mait.nalg = 0;
+            Console.WriteLine("Su nälg on hetkel: " + Mait.nalg);
             Mait.janu = 0;
+            Console.WriteLine("Su janu on: " + Mait.janu);
             Mait.vasimus = 15;
+            Console.WriteLine("Väsimus on: "+ Mait.vasimus);
             Mait.volgnevused = 0;
+            Console.WriteLine("Võlgnevuste suurus on: " + Mait.volgnevused);
             Mait.stress = 0;
+            Console.WriteLine("Stressinäitaja on: " + Mait.stress);
             Mait.promill = 0;
+            Console.WriteLine("Joobeseisund on " + Mait.promill + " promilli.");
             Mait.tups = 10;
 
-            Console.WriteLine("Täna lähme kooli.\nVajuta: \nA - maga edasi\nB - mine kooli\n");
+            Console.WriteLine("\nOn varahommik ja tuleb kooli minna. Sa ei läinud eile normaalsel ajal magama, nagu sul kombeks on ja nüüd on uni rõvedalt suur. Sul on valida kas:\nVajuta: \nA - Maga edasi\nB - Mine kooli\n");
 
             key = Console.ReadKey().Key.ToString();
             kustuta_sisend();
