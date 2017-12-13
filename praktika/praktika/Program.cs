@@ -106,8 +106,8 @@ namespace praktika
         static void hessi()
         {
             Console.WriteLine("Lähen Hessi!\nHessis on järjekord, jääd tundi hiljaks!");
-            Mait.vasimus = 5;
-            Mait.volgnevused = 10;
+            Mait.vasimus += 5;
+            Mait.volgnevused += 10;
             Mait.nalg = 0;
             Mait.janu = 0;
             skoor++;
@@ -117,25 +117,28 @@ namespace praktika
         {
             Console.WriteLine("\nKoolipäev on läbi ja kätte on jõudnud õhtu\nKas sa tahad minna ilma lubadeta autoga sõitma? \nA - Lähen sõitma!\nB - Ei lähe sõitma\n");
             key = Console.ReadKey().Key.ToString();
-            kustuta_sisend();
+            
             if (key.ToUpper() == "A")
             {
                 int chance = rnd.Next(1, 100);
                 if (chance % 2 == 0)
                 {
-                    Console.WriteLine("\nJäid Politseile vahele, huligaan!\n");
+                    kustuta_sisend();
+                    Console.WriteLine("\nJäid Politseile vahele, huligaan!");
                     Mait.stress += 30;
                     Mait.raha = 0;
                 }
                 else
                 {
-                    Console.WriteLine("\nVedas, ei jäänud vahele!\n");
+                    kustuta_sisend();
+                    Console.WriteLine("\nVedas, ei jäänud vahele!");
                     skoor++;
                 }
             }
             else if (key.ToUpper() == "B")
             {
-                Console.WriteLine("Väga tubli! Ilma lubadeta ei tohi sõita!\n");
+                kustuta_sisend();
+                Console.WriteLine("\nVäga tubli! Ilma lubadeta ei tohi sõita!\n");
             }
             kontrollinaitajaid();
             ohtusook();
@@ -399,41 +402,37 @@ namespace praktika
                 Console.WriteLine("Tund saab läbi.");
             }
             kontrollinaitajaid();
-            autosoit();
+            tups();
         }
 
 
         static void tups()
         {
-            Console.WriteLine("Lähed peale kooli raha teenima tupsu müümisega?\nA - Lähen müüma, sest raha on vaja.\nB - Ei lähe müüma, raha on piisavalt praegu.\n");
+            Console.WriteLine("\nLähed peale kooli tupsu müüma?\nA - Lähen müüma, sest raha on vaja.\nB - Ei lähe müüma, raha on piisavalt praegu.\n");
             key = Console.ReadKey().Key.ToString();
-            kustuta_sisend();   
+            kustuta_sisend();
             if (key.ToUpper() == "A")
             {
                 
                 int chance = rnd.Next(1, 100);
-                if (chance % 2 == 0)
+                if (chance >= 1 && chance <= 30)
                 {
-                    Console.WriteLine("Müüsid tupsu ja ei jäänud vahele. Vedas!");
+                    Console.WriteLine("\nJäid politseile vahele! Õnneks nad ei vaadanud su kotti, enamik torni jäi alles. Said trahvi pealekauba.");
+                    Mait.tups -= 5;
+                    Mait.raha -= 10;
+                }
+                else
+                {
+                    Console.WriteLine("\nMüüsid tupsu ja ei jäänud vahele. Vedas!");
                     Mait.raha += 10;
                     Mait.stress += 5;
                     skoor++;
                     Mait.tups -= 5;
                 }
-                else
-                {
-                    Console.WriteLine("Müüsid tupsu ja jäid vahele. Su kogu tups konfiskeeriti ära.");
-                    Mait.raha -= 10;
-                    Mait.stress += 15;
-                    Mait.vasimus += 10;
-                    Mait.tups = 0;
-                }
             }
             else if (key.ToUpper() == "B")
             {
-                kustuta_sisend();
-                Console.WriteLine("Tubli! Tupsu ei tohigi müüa");
-                skoor++;
+                Console.WriteLine("\nTubli! Tupsu ei tohigi müüa!");
             }
             kontrollinaitajaid();
             autosoit();
@@ -441,43 +440,42 @@ namespace praktika
 
         static void ohtusook()
         {
-            Console.WriteLine("\nOled jõudnud koju. On aeg suua ohtust \nA - Lahen soon ohtust kuna koht on tuhi ja olen vasinud \nB - Ei soo ohtust kuna csi on vaja pelada\n");
+            Console.WriteLine("\nOled jõudnud koju. On aeg süüa õhtust \nA - Lahen söön õhtust kuna koht on tuhi ja olen vasinud \nB - Ei soo õhtusööki, proovin Globalisse saada.\n");
             key = Console.ReadKey().Key.ToString();
-            if (key.ToUpper() == "A")
-                kustuta_sisend();
+            kustuta_sisend();
+            if (key.ToUpper() == "A")  
             {
-                Mait.vasimus -= 5;
-                Mait.stress -= 5;
-                skoor++;
-            }
-            if (key.ToUpper() == "B")
-                kustuta_sisend();
+                Console.WriteLine("\nJood teed ja sööd eilset kapsasuppi, gurmee!");
+                Mait.nalg = 0;
+                Mait.janu = 0;
+            } 
+            else if (key.ToUpper() == "B")
             {
-                Mait.vasimus += 10;
-                Mait.stress -= 5;
+                Console.WriteLine("\nSaid Globalisse, päris hea!");
+                Mait.stress -= 10;
                 skoor++;
             }
             kodutood();
-            
         }
+            
         static void kodutood()
         {
+            Console.WriteLine("\nNüüd oleks aeg teha kodutoid \nA - Teen oma kodutood ara \nB - Kesse ikka õpib, lähen vaatan Netflixi.\n");
             key = Console.ReadKey().Key.ToString();
-            Console.WriteLine("\nNüüd oleks aeg teha kodutoid \nA - Teen oma kodutood ara \nB - Lähen puhkama, mängin arvutiga ja vaatan telekat");
+            kustuta_sisend();
             if (key.ToUpper() == "A")
-                kustuta_sisend();
             {
-                Console.WriteLine("Hea too! Opetajad on homme koolis kindlasti rahul");
-                Mait.stress += 5;
-                Mait.vasimus += 5;
-                skoor++;
+                Console.WriteLine("Hea too! Õpetajad on homme koolis kindlasti rahul");
+                Mait.stress += 10;
+                Mait.vasimus += 10;
+                Mait.volgnevused -= 10;
+                
             }
-            if (key.ToUpper() == "B")
-                kustuta_sisend();
+            if (key.ToUpper() == "B")       
             {
-                Console.WriteLine("Pole hullu. Said volgnevusi juurde, aga samas puhkasid välja");
-                Mait.vasimus -= 5;
-                Mait.stress -= 5;
+                Console.WriteLine("Pole hullu. Said võlgnevusi juurde, aga puhkasid välja");
+                Mait.vasimus -= 10;
+                Mait.stress -= 10;
                 Mait.volgnevused += 10;
                 skoor++;
             }
