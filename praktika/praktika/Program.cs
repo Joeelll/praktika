@@ -137,6 +137,7 @@ namespace praktika
                     Console.WriteLine("\nJäid Politseile vahele, huligaan!");
                     Mait.stress += 30;
                     Mait.raha = 0;
+                    politseilabiraakimised();
                 }
                 else
                 {
@@ -156,7 +157,39 @@ namespace praktika
             ohtusook();
         }
 
+        static void politseilabiraakimised()
+        {
+            Console.WriteLine("Jäid politseile vahele. Kui labiraakimised ei onnestu, siis on suurem trahv \nA - Proovi valja raakida \nB - Ei proovi raakida" );
+            key = Console.ReadKey().Key.ToString();
+            kustuta_sisend();
+            if (key.ToUpper() == "A")
+            {
+                int chance = rnd.Next(1, 100);
+                if (chance % 2 == 0)
+                {
+                    Console.WriteLine("Raakisid politsei ara, saad vaiksema trahvi");
+                    Mait.raha -= 5;
+                    Mait.stress += 15;
+                    Mait.vasimus += 5;
+                    skoor++;
+                }
+                else
+                {
+                    Console.WriteLine("Sa ei raakinud politseid ara, saad suurema trahvi");
+                    Mait.raha -= 15;
+                    Mait.stress += 20;
+                    Mait.vasimus += 5;
+                }
+            }
+            if(key.ToUpper() == "B")
+            {
+                Console.WriteLine("Sa ei proovinud politseiga raakida, saad keskmise suurusega trahvi");
+                Mait.raha -= 10;
+                Mait.stress += 15;
+                Mait.vasimus += 5;
+            }
 
+        }
         static void sookla()
         {
             Console.WriteLine("\nLähed sööklasse!\nKontrollid, kas kaardi võtsid.");
@@ -477,10 +510,8 @@ namespace praktika
                 else
                 {
                     Console.WriteLine("\nMüüsid tupsu ja jäid vahele. Su kogu tups konfiskeeriti ära.");
-                    Mait.raha -= 10;
-                    Mait.stress += 15;
-                    Mait.vasimus += 10;
-                    Mait.tups = 0;
+                    politseilabiraakimised();
+
                 }
             }
             else if (key.ToUpper() == "B")
