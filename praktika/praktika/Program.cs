@@ -18,25 +18,32 @@ namespace praktika
         {
             Console.WriteLine("Vajuta pohhuilt nuppu, et käivitada mäng");
             Console.ReadKey(true);
-
             game();
         }
 
+
         static void game()
         {
-            if (restartGame)
+            if (restartGame == false)
             {
                 Mait = new opilane();
                 Mait.raha = 10;
+                Console.WriteLine("\nSul on raha: " + Mait.raha);
                 Mait.nalg = 0;
+                Console.WriteLine("Su nälg on hetkel: " + Mait.nalg);
                 Mait.janu = 0;
+                Console.WriteLine("Su janu on: " + Mait.janu);
                 Mait.vasimus = 15;
+                Console.WriteLine("Väsimus on: " + Mait.vasimus);
                 Mait.volgnevused = 0;
-                Mait.stress = 80;
+                Console.WriteLine("Võlgnevuste suurus on: " + Mait.volgnevused);
+                Mait.stress = 90;
+                Console.WriteLine("Stressinäitaja on: " + Mait.stress);
                 Mait.promill = 0;
+                Console.WriteLine("Joobeseisund on " + Mait.promill + " promilli.");
                 Mait.tups = 10;
 
-                Console.WriteLine("Täna lähme kooli.\nVajuta: \nA - maga edasi\nB - mine kooli\n");
+                Console.WriteLine("\nOn varahommik ja tuleb kooli minna. Sa ei läinud eile normaalsel ajal magama, nagu sul kombeks on ja nüüd on uni rõvedalt suur. Sul on valida kas:\nVajuta: \nA - Maga edasi\nB - Mine kooli\n");
 
                 key = Console.ReadKey().Key.ToString();
                 kustuta_sisend();
@@ -260,6 +267,19 @@ namespace praktika
         static bool surm()
         {
             Console.WriteLine("Mäng on läbi. Skoor on: " + skoor);
+            Console.WriteLine("A- alusta uuesti\n B- pane mäng kinni");
+
+            skoor = 0;
+            key = Console.ReadKey().Key.ToString();
+            kustuta_sisend();
+            if (key.ToUpper() == "A")
+            {
+                game();
+            }
+            else if (key.ToUpper() == "B")
+            {
+                Environment.Exit(0);
+            }
             return restartGame = true;
         }
 
