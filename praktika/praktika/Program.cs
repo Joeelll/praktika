@@ -11,6 +11,7 @@ namespace praktika
         static opilane Mait;
         static string key;
         static int skoor = 0;
+        static bool restartGame = false;
         static Random rnd = new Random();
 
         static void Main(string[] args)
@@ -18,29 +19,37 @@ namespace praktika
             Console.WriteLine("Vajuta pohhuilt nuppu, et käivitada mäng");
             Console.ReadKey(true);
 
-            Mait = new opilane();
-            Mait.raha = 10;
-            Mait.nalg = 0;
-            Mait.janu = 0;
-            Mait.vasimus = 15;
-            Mait.volgnevused = 0;
-            Mait.stress = 0;
-            Mait.promill = 0;
-            Mait.tups = 10;
+            game();
+        }
 
-            Console.WriteLine("Täna lähme kooli.\nVajuta: \nA - maga edasi\nB - mine kooli\n");
+        static void game()
+        {
+            if (restartGame)
+            {
+                Mait = new opilane();
+                Mait.raha = 10;
+                Mait.nalg = 0;
+                Mait.janu = 0;
+                Mait.vasimus = 15;
+                Mait.volgnevused = 0;
+                Mait.stress = 80;
+                Mait.promill = 0;
+                Mait.tups = 10;
 
-            key = Console.ReadKey().Key.ToString();
-            kustuta_sisend();
-            if (key.ToUpper() == "A")
-            {
-                magaEdasi();
-                skoor++;
-            }
-            else if (key.ToUpper() == "B")
-            {
-                mineKooli();
-                skoor++;
+                Console.WriteLine("Täna lähme kooli.\nVajuta: \nA - maga edasi\nB - mine kooli\n");
+
+                key = Console.ReadKey().Key.ToString();
+                kustuta_sisend();
+                if (key.ToUpper() == "A")
+                {
+                    skoor++;
+                    magaEdasi();
+                }
+                else if (key.ToUpper() == "B")
+                {
+                    skoor++;
+                    mineKooli();
+                }
             }
         }
 
@@ -61,7 +70,11 @@ namespace praktika
             Mait.volgnevused = 0;
             Mait.vasimus += 10;
             Mait.stress += 5;
-            kontrollinaitajaid();
+            var surnud = kontrollinaitajaid();
+            if (surnud)
+            {
+                game();
+            }
 
             Console.WriteLine("Jõudsid kooli ja õpetaja andis rühmatunnitöö.\nA - Tee kaasa\nB - Mängi growtopiat\n");
             tunnitoo();
@@ -124,7 +137,11 @@ namespace praktika
             {
                 Console.WriteLine("Väga tubli! Ilma lubadeta ei tohi sõita!\n");
             }
-            kontrollinaitajaid();
+            var surnud = kontrollinaitajaid();
+            if (surnud)
+            {
+                game();
+            }
             ohtusook();
         }
 
@@ -181,7 +198,11 @@ namespace praktika
                 Mait.nalg = 0;
                 Mait.janu = 0;
             }
-            kontrollinaitajaid();
+            var surnud = kontrollinaitajaid();
+            if (surnud)
+            {
+                game();
+            }
         }
 
         static void kustuta_sisend()
@@ -205,32 +226,41 @@ namespace praktika
                 Console.WriteLine("Sul pole raha, et haiglaarvet maksta. Sind jäetakse surema.");
                 surm();
             }
-            kontrollinaitajaid();
+            var surnud = kontrollinaitajaid();
+            if (surnud)
+            {
+                game();
+            }
         }
 
-        static void kontrollinaitajaid()
+        static bool kontrollinaitajaid()
         {
             if (Mait.stress >= 100)
             {
-                Console.WriteLine("Tegid suicide");
-                surm();
+                Console.WriteLine("\nTegid suicide.");
+                var sunud = surm();
+                return sunud;
             }
             if (Mait.nalg >= 100)
             {
-                Console.WriteLine("Surid nälga");
-                surm();
+                Console.WriteLine("Surid nälga.");
+                var sunud = surm();
+                return sunud;
             }
             if (Mait.promill >= 75)
             {
-                Console.WriteLine("Said alkoholimürgituse, sind viiakse kiirabiga haiglasse");
+                Console.WriteLine("Said alkoholimürgituse, sind viiakse kiirabiga haiglasse.");
                 alkomyrgitus();
                 skoor++;
+                return false;
             }
+            return false;
         }
 
-        static void surm()
+        static bool surm()
         {
-            Console.WriteLine("\nMäng on läbi, surid ära. Skoor on: " + skoor);
+            Console.WriteLine("Mäng on läbi. Skoor on: " + skoor);
+            return restartGame = true;
         }
 
         static void tunnitoo()
@@ -249,7 +279,11 @@ namespace praktika
                 Mait.stress -= 10;
                 skoor++;
             }
-            kontrollinaitajaid();
+            var surnud = kontrollinaitajaid();
+            if (surnud)
+            {
+                game();
+            }
         }
 
         static void kontrolltoo()
@@ -287,7 +321,11 @@ namespace praktika
 
                 }
             }
-            kontrollinaitajaid();
+            var surnud = kontrollinaitajaid();
+            if (surnud)
+            {
+                game();
+            }
             tups();
         }
         static void kehaline()
@@ -385,7 +423,11 @@ namespace praktika
                 System.Threading.Thread.Sleep(2000);
                 Console.WriteLine("Tund saab läbi.");
             }
-            kontrollinaitajaid();
+            var surnud = kontrollinaitajaid();
+            if (surnud)
+            {
+                game();
+            }
             autosoit();
         }
 
@@ -422,7 +464,11 @@ namespace praktika
                 Console.WriteLine("Tubli! Tupsu ei tohigi müüa");
                 skoor++;
             }
-            kontrollinaitajaid();
+            var surnud = kontrollinaitajaid();
+            if (surnud)
+            {
+                game();
+            }
             autosoit();
         }
 
