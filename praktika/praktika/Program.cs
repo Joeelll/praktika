@@ -130,19 +130,19 @@ namespace praktika
                 int chance = rnd.Next(1, 100);
                 if (chance % 2 == 0)
                 {
-                    Console.WriteLine("\nJäid Politseile vahele, huligaan!\n");
+                    Console.WriteLine("\nJäid Politseile vahele, huligaan!");
                     Mait.stress += 30;
                     Mait.raha = 0;
                 }
                 else
                 {
-                    Console.WriteLine("\nVedas, ei jäänud vahele!\n");
+                    Console.WriteLine("\nVedas, ei jäänud vahele!");
                     skoor++;
                 }
             }
             else if (key.ToUpper() == "B")
             {
-                Console.WriteLine("Väga tubli! Ilma lubadeta ei tohi sõita!\n");
+                Console.WriteLine("\nVäga tubli! Ilma lubadeta ei tohi sõita!\n");
             }
             var surnud = kontrollinaitajaid();
             if (surnud)
@@ -296,7 +296,7 @@ namespace praktika
             }
             else if (key.ToUpper() == "B")
             {
-                Console.WriteLine("\nAvasid growtopias viienda leveli, aga jäid vist teemast maha!");
+                Console.WriteLine("\nAvasid growtopias viienda leveli, aga jäid teemast maha!");
                 Mait.volgnevused += 10;
                 Mait.stress -= 10;
                 skoor++;
@@ -450,7 +450,7 @@ namespace praktika
             {
                 game();
             }
-            autosoit();
+            tups();
         }
 
 
@@ -458,14 +458,13 @@ namespace praktika
         {
             Console.WriteLine("Lähed peale kooli raha teenima tupsu müümisega?\nA - Lähen müüma, sest raha on vaja.\nB - Ei lähe müüma, raha on piisavalt praegu.\n");
             key = Console.ReadKey().Key.ToString();
-            kustuta_sisend();   
+            kustuta_sisend();
+            int chance = rnd.Next(1, 100);
             if (key.ToUpper() == "A")
             {
-                
-                int chance = rnd.Next(1, 100);
                 if (chance % 2 == 0)
                 {
-                    Console.WriteLine("Müüsid tupsu ja ei jäänud vahele. Vedas!");
+                    Console.WriteLine("\nMüüsid tupsu ja ei jäänud vahele. Vedas!");
                     Mait.raha += 10;
                     Mait.stress += 5;
                     skoor++;
@@ -473,7 +472,7 @@ namespace praktika
                 }
                 else
                 {
-                    Console.WriteLine("Müüsid tupsu ja jäid vahele. Su kogu tups konfiskeeriti ära.");
+                    Console.WriteLine("\nMüüsid tupsu ja jäid vahele. Su kogu tups konfiskeeriti ära.");
                     Mait.raha -= 10;
                     Mait.stress += 15;
                     Mait.vasimus += 10;
@@ -517,20 +516,19 @@ namespace praktika
         }
         static void kodutood()
         {
+            Console.WriteLine("\nNüüd oleks aeg teha kodutoid \nA - Teen oma kodutood ara \nB - Lähen puhkama, mängin arvutiga ja vaatan telekat\n");
             key = Console.ReadKey().Key.ToString();
-            Console.WriteLine("\nNüüd oleks aeg teha kodutoid \nA - Teen oma kodutood ara \nB - Lähen puhkama, mängin arvutiga ja vaatan telekat");
+            kustuta_sisend();
             if (key.ToUpper() == "A")
-                kustuta_sisend();
             {
-                Console.WriteLine("Hea too! Opetajad on homme koolis kindlasti rahul");
+                Console.WriteLine("\nHea too! Opetajad on homme koolis kindlasti rahul");
                 Mait.stress += 5;
                 Mait.vasimus += 5;
                 skoor++;
             }
             if (key.ToUpper() == "B")
-                kustuta_sisend();
             {
-                Console.WriteLine("Pole hullu. Said volgnevusi juurde, aga samas puhkasid välja");
+                Console.WriteLine("\nPole hullu. Said volgnevusi juurde, aga samas puhkasid välja");
                 Mait.vasimus -= 5;
                 Mait.stress -= 5;
                 Mait.volgnevused += 10;
