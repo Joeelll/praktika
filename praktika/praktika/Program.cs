@@ -86,7 +86,7 @@ namespace praktika
                 game();
             }
 
-            Console.WriteLine("Jõudsid kooli ja õpetaja andis rühmatunnitöö.\nA - Tee kaasa\nB - Mängi growtopiat\n");
+            Console.WriteLine("Jõudsid kooli ja õpetaja andis rühmatunnitöö.\nA - Tee kaasa\nB - Lase teistel kõik töö ära teha nagu kombeks\n");
             tunnitoo();
 
             Console.WriteLine("On söögi vahetund.\nA - Lähed toitlustusasutusse Hesburger\nB - Lähed sööklasse\n");
@@ -115,7 +115,7 @@ namespace praktika
 
         static void hessi()
         {
-            Console.WriteLine("Lähen Hessi!\nHessis on järjekord, jääd tundi hiljaks!");
+            Console.WriteLine("Lähen Hessi!\nHessis oli järjekord ja sa jäid ühe tunni hiljaks!");
             Mait.vasimus = 5;
             Mait.volgnevused = 10;
             Mait.nalg = 0;
