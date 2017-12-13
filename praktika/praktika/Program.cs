@@ -37,7 +37,7 @@ namespace praktika
                 Console.WriteLine("Väsimus on: " + Mait.vasimus);
                 Mait.volgnevused = 0;
                 Console.WriteLine("Võlgnevuste suurus on: " + Mait.volgnevused);
-                Mait.stress = 90;
+                Mait.stress = 0;
                 Console.WriteLine("Stressinäitaja on: " + Mait.stress);
                 Mait.promill = 0;
                 Console.WriteLine("Joobeseisund on " + Mait.promill + " promilli.");
