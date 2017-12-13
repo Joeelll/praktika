@@ -538,15 +538,6 @@ namespace praktika
             }
 
         }
-            static void fight()
-            {
-                int Mait_hp = 100;
-                int vastane_hp = 100;
-
-                Console.WriteLine("Sul on " + Mait_hp + " HP\nVastasel on: " + vastane_hp + " HP");
-                Console.WriteLine("Valikud:\nA-Jab\nB-Uppercut\n");
-
-            }
         }
     }
 
