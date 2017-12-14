@@ -656,54 +656,50 @@ namespace praktika
                 Console.WriteLine("\nMÄNG LÄBI!");
             }
         }
-        
+
         static void hommik2()
         {
+            Console.WriteLine("Hommik! On nädalavahetus. \nA - Lähen teen süüa köögis \nB - Lähen söön väljas \nC - Magan edasi");
+            key = Console.ReadKey().Key.ToString();
+            kustuta_sisend();
+            if (key.ToUpper() == "A")
             {
-
-                Console.ReadKey();
-                {
-                    Console.WriteLine("Hommik! On nädalavahetus. \nA - Lähen teen süüa köögis \nB - Lähen söön väljas \nC - Magan edasi");
-                    key = Console.ReadKey().Key.ToString();
-                    kustuta_sisend();
-                    if (key.ToUpper() == "A")
-                    {
-                        Console.WriteLine("Tegid omale süüa ja oled valmis tegudeks!");
-                        Mait.nalg -= 5;
-                        Mait.janu -= 5;
-                        Mait.vasimus -= 5;
-                        Mait.stress -= 5;
-                        skoor++;
-                    }
-                    if (key.ToUpper() == "B")
-                    {
-                        Console.WriteLine("Sõid väljas ja oled valmis tegudeks!");
-                        Mait.raha -= 5;
-                        Mait.nalg -= 5;
-                        Mait.janu -= 5;
-                        Mait.stress -= 5;
-                        Mait.vasimus -= 5;
-                        skoor++;
-
-                    }
-                    if (key.ToUpper() == "C")
-                    {
-                        Console.WriteLine("Magasid kaua ja oled valmis tegudeks tühja kõhuga");
-                        Mait.vasimus -= 10;
-                        Mait.stress -= 5;
-                        Mait.janu += 5;
-                        Mait.nalg += 5;
-                        skoor++;
-                        plaanid();
-
-                    }
-                }
+                Console.WriteLine("Tegid omale süüa ja oled valmis tegudeks!");
+                Mait.nalg -= 5;
+                Mait.janu -= 5;
+                Mait.vasimus -= 5;
+                Mait.stress -= 5;
+                skoor++;
             }
+            if (key.ToUpper() == "B")
+            {
+                Console.WriteLine("Sõid väljas ja oled valmis tegudeks!");
+                Mait.raha -= 5;
+                Mait.nalg -= 5;
+                Mait.janu -= 5;
+                Mait.stress -= 5;
+                Mait.vasimus -= 5;
+                skoor++;
+
+            }
+            if (key.ToUpper() == "C")
+            {
+                Console.WriteLine("Magasid kaua ja oled valmis tegudeks tühja kõhuga");
+                Mait.vasimus -= 10;
+                Mait.stress -= 5;
+                Mait.janu += 5;
+                Mait.nalg += 5;
+                skoor++;
+                plaanid();
+
+            }
+
+
         }
 
         static void plaanid()
         {
-            Console.WriteLine("Kuna on nädalavahetus,siis sul pole kooli. Seega mis sa teha tahad? \nA - Mängin terve päev csi ja õhtul lähed peole \nB - Saad sõpradega kokku, veedad sõpradega aega ja õhtul lähed peole \nC - Teed terve päev võlgnevusi tasa ja lähed õhtul peole");
+            Console.WriteLine("Kuna on nädalavahetus, siis sul pole kooli. Seega mis sa teha tahad? \nA - Mängin terve päev csi ja õhtul lähed peole \nB - Saad sõpradega kokku, veedad sõpradega aega ja õhtul lähed peole \nC - Teed terve päev võlgnevusi tasa ja lähed õhtul peole");
             key = Console.ReadKey().Key.ToString();
             kustuta_sisend();
             if (key.ToUpper() == "A")
@@ -734,13 +730,49 @@ namespace praktika
                 Mait.volgnevused -= 20;
                 skoor++;
             }
-
         }
 
+        static void pidu()
+        {
+            Console.WriteLine("Jõuad peole, hakkad sõpradega viina võtma.");
+            Mait.promill += 30;
+            System.Threading.Thread.Sleep(1111);
+            while (true)
+            {
+                Console.WriteLine("Kas tahad veel paar pitsi viina võtta?\nA- Poh, mis see paar pitsi ikka teeb?\nB- ei ma olen ilge pussar ja lähen nüüd koju magama");
+                key = Console.ReadKey().Key.ToString();
+                kustuta_sisend();
+                if (key.ToUpper() == "A")
+                {
+                    Mait.promill += 15;
+                }
+                else if (key.ToUpper() == "B")
+                {
+                    pealePidu();
+                }
+            }
+        }
 
-
-
-
+        static void pealePidu()
+        {
+            Console.WriteLine("Jõudsid öösel koju, ema sai tigedaks su peale, sest käisid joomas. Lähed magama.");
+            System.Threading.Thread.Sleep(1111);
+            Console.WriteLine("Ema ajab sind tigedalt üles ja käsib tööle hoovis hakata.");
+            Console.WriteLine("Hakkad tööle pohmakaga.....");
+            using (var progress = new ProgressBar())
+            {
+                for (int i = 1; i < 200; i++)
+                {
+                    progress.Report((double)i / 180);
+                    Thread.Sleep(20);
+                }
+            }
+            Mait.stress += 10;
+            Mait.vasimus = 90;
+            Console.WriteLine("Töö tehtud.");
+            System.Threading.Thread.Sleep(1111);
+            Console.WriteLine("Oled räigelt väsinud ja tahaksid magada.");
+        }
 
         static void skoor_pluss(string valik)
         {
