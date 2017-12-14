@@ -108,7 +108,6 @@ namespace praktika
             {
                 game();
             }
-            Thread.Sleep(2222);
             Console.Clear();
             Console.WriteLine("Jõudsid kooli ja õpetaja andis rühmatunnitöö.");
             Thread.Sleep(2222);
@@ -123,6 +122,17 @@ namespace praktika
             kustuta_sisend();
             if (key.ToUpper() == "A")
             {
+                Console.Clear();
+                Console.WriteLine("Lähed Hesburgerisse...");
+                using (var progress = new ProgressBar())
+                {
+                    for (int i = 0; i <= 100; i++)
+                    {
+                        progress.Report((double)i / 50);
+                        Thread.Sleep(50);
+                    }
+                }
+                Thread.Sleep(2000);
                 Console.Clear();
                 hessi();
             }
