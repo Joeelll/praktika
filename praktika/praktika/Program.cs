@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,7 +15,6 @@ namespace praktika
         static int skoor = 0;
         static bool restartGame = false;
         static Random rnd = new Random();
-
 
         static void Main(string[] args)
         {
@@ -50,12 +50,13 @@ namespace praktika
                 Mait.promill = 0;
                 Console.WriteLine("Joobeseisund on " + Mait.promill + " promilli.");
                 Mait.tups = 10;
-                System.Threading.Thread.Sleep(5555);
+                Thread.Sleep(1000);
 
                 Console.Clear();
                 Console.WriteLine("On varahommik ja tuleb kooli minna. Sa ei läinud eile normaalsel ajal magama, nagu sul kombeks on ja nüüd on uni rõvedalt suur.\nSul on valida kas:");
-                System.Threading.Thread.Sleep(5555);
+                Thread.Sleep(1500);
                 skoor_pluss("A - Maga edasi, olen naguinii praktikas kõigest ees ja õps ei kontrolli kohalolekut.");
+                Thread.Sleep(500);
                 skoor_miinus("B - Mine kooli, koolis on Jaan ja Jaan on äge.\n");
                 key = Console.ReadKey().Key.ToString();
                 kustuta_sisend();
@@ -73,32 +74,32 @@ namespace praktika
 
         static void magaEdasi()
         {
-            Console.WriteLine("\nOled parajalt oma astraalrännakut sooritamas, kui ema peksab su ukse maha ja ajab sind üles. Pead ikka kooli mienema.");
+            Console.WriteLine("\nOled parajalt oma astraalrännakut sooritamas, kui ema peksab su ukse maha ja ajab sind üles. Pead ikka kooli minnema.");
             Mait.volgnevused += 10;
             Mait.vasimus -= 5;
             Mait.stress += 5;
             kontrollinaitajaid();
             skoor++;
-            System.Threading.Thread.Sleep(5555);
+            Thread.Sleep(3333);
+            Console.Clear();
             mineKooli();
 
         }
 
         static void mineKooli()
         {
-            Console.WriteLine("\nTellid omale Uberi ja lähed kooli.");
-            System.Threading.Thread.Sleep(6666);
+            Console.Clear();
+            Console.WriteLine("Tellid omale Uberi ja lähed kooli.");
+            Thread.Sleep(2222);
             Console.Write("Sõidad kooli..... ");
             using (var progress = new ProgressBar())
             {
-                for (int i = 1; i <= 200; i++)
+                for (int i = 0; i <= 100; i++)
                 {
-                    progress.Report((double)i / 180);
-                    Thread.Sleep(20);
+                    progress.Report((double)i / 50);
+                    Thread.Sleep(50);
                 }
             }
-            Console.WriteLine("Done.");
-            Console.Clear();
             Mait.volgnevused = 0;
             Mait.vasimus += 10;
             Mait.stress += 5;
@@ -107,24 +108,27 @@ namespace praktika
             {
                 game();
             }
-
+            Thread.Sleep(2222);
+            Console.Clear();
             Console.WriteLine("Jõudsid kooli ja õpetaja andis rühmatunnitöö.");
-            Thread.Sleep(4444);
-            skoor_miinus("A - Tee kaasa, sest sa tahad ka ükspäev oma firma teha ja tulumaksu mitte maksta.");
-            skoor_pluss("B - Lase teistel kõik töö ära teha nagu kombeks, sa lähed ju Soome tänavakive panema.\n");
+            Thread.Sleep(2222);
             tunnitoo();
 
-            Console.WriteLine("On söögi vahetund.");
-            skoor_pluss("A - Lähed toitlustusasutusse Hesburger");
-            skoor_miinus("nB - Lähed sööklasse");
+            Console.WriteLine("Kuuled kella helinat. Algab söögivahetund.");
+            Thread.Sleep(2222);
+            skoor_pluss("A - Lähed toitlustusasutusse Hesburger.");
+            Thread.Sleep(500);
+            skoor_miinus("B - Lähed sööklasse.\n");
             key = Console.ReadKey().Key.ToString();
             kustuta_sisend();
             if (key.ToUpper() == "A")
             {
+                Console.Clear();
                 hessi();
             }
             else if (key.ToUpper() == "B")
             {
+                Console.Clear();
                 sookla();
 
             }
@@ -141,7 +145,7 @@ namespace praktika
 
         static void hessi()
         {
-            Console.WriteLine("Lähen Hessi!\nHessis oli järjekord ja sa jäid ühe tunni hiljaks!");
+            Console.WriteLine("Lähed Hesburgerisse, aga seal oli pikk järjekord ja sa jäid selle tõttu ühe tunni hiljaks!");
             Mait.vasimus = 5;
             Mait.volgnevused = 10;
             Mait.nalg = 0;
@@ -219,12 +223,15 @@ namespace praktika
         {
             Console.WriteLine("\nLähed sööklasse!\nKontrollid, kas kaardi võtsid.");
             int chance = rnd.Next(1, 100);
-            System.Threading.Thread.Sleep(2000);
+            Thread.Sleep(2000);
             if (chance % 2 == 0)
             {
-                Console.WriteLine("Jätsid kaardi koju lollpea!");
+                skoor_miinus("Jätsid kaardi koju lollpea!");
                 Mait.stress += 10;
-                Console.WriteLine("A - Räägi söögitädiga\nB - Osta puhvetist toitu\nC - Mine ikka Hesburgerisse\n");
+                skoor--;
+                Console.WriteLine("A - Räägi söögitädiga");
+                Console.WriteLine("B - Osta puhvetist toitu");
+                Console.WriteLine("C - Mine ikka Hesburgerisse");
                 key = Console.ReadKey().Key.ToString();
                 kustuta_sisend();
                 if (key.ToUpper() == "A")
@@ -264,7 +271,14 @@ namespace praktika
             }
             else
             {
-                Console.WriteLine("Kaart on olemas, täna saab süüa.");
+                if (chance % 2 == 0)
+                {
+                    Console.WriteLine("Kaart on olemas, täna on söögiks Kalaburger");
+                }
+                else
+                {
+                    Console.WriteLine("Kaart on olemas, täna on söögiks Kalasupp");
+                }
                 Mait.nalg = 0;
                 Mait.janu = 0;
             }
@@ -349,6 +363,9 @@ namespace praktika
 
         static void tunnitoo()
         {
+            skoor_miinus("A - Tee kaasa, sest sa tahad ka ükspäev oma firma teha ja tulumaksu mitte maksta.");
+            Thread.Sleep(500);
+            skoor_pluss("B - Lase teistel kõik töö ära teha nagu kombeks, sa lähed ju Soome tänavakive panema.\n");
             key = Console.ReadKey().Key.ToString();
             kustuta_sisend();
             if (key.ToUpper() == "A")
@@ -368,6 +385,8 @@ namespace praktika
             {
                 game();
             }
+            Thread.Sleep(3000);
+            Console.Clear();
         }
 
         static void kontrolltoo()
