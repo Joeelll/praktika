@@ -14,14 +14,18 @@ namespace praktika
         static bool restartGame = false;
         static Random rnd = new Random();
 
+
         static void Main(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WindowWidth = 150;
+            Console.WindowHeight = 30;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
             Console.Title = "MÄNG MAIDU ELUST!";
             Console.WriteLine("Vajuta pohhuilt nuppu, et käivitada mäng");
             Console.ReadKey(true);
             game();
+
         }
 
 
@@ -45,9 +49,12 @@ namespace praktika
                 Mait.promill = 0;
                 Console.WriteLine("Joobeseisund on " + Mait.promill + " promilli.");
                 Mait.tups = 10;
+                System.Threading.Thread.Sleep(1111);
 
-                Console.WriteLine("\nOn varahommik ja tuleb kooli minna. Sa ei läinud eile normaalsel ajal magama, nagu sul kombeks on ja nüüd on uni rõvedalt suur. Sul on valida kas:\nVajuta: \nA - Maga edasi\nB - Mine kooli\n");
-
+                Console.WriteLine("\nOn varahommik ja tuleb kooli minna. Sa ei läinud eile normaalsel ajal magama, nagu sul kombeks on ja nüüd on uni rõvedalt suur.\nSul on valida kas:");
+                System.Threading.Thread.Sleep(1111);
+                skoor_pluss("A - Maga edasi, olen naguinii praktikas kõigest ees ja õps ei kontrolli kohalolekut.");
+                skoor_miinus( "B - Mine kooli, koolis on Jaan ja Jaan on äge.\n");
                 key = Console.ReadKey().Key.ToString();
                 kustuta_sisend();
                 if (key.ToUpper() == "A")
@@ -57,7 +64,6 @@ namespace praktika
                 }
                 else if (key.ToUpper() == "B")
                 {
-                    skoor++;
                     mineKooli();
                 }
             }
@@ -65,18 +71,22 @@ namespace praktika
 
         static void magaEdasi()
         {
-            Console.WriteLine("\nOtsustasid edasi magada, kuid ema ajas sind ikka kooli.");
+            Console.WriteLine("\nOled parajalt oma astraalrännakut sooritamas, kui ema peksab su ukse maha ja ajab sind üles. Pead ikka kooli mienema.");
             Mait.volgnevused += 10;
             Mait.vasimus -= 5;
             Mait.stress += 5;
             kontrollinaitajaid();
             skoor++;
+            System.Threading.Thread.Sleep(1111);
             mineKooli();
+
         }
 
         static void mineKooli()
         {
-            Console.WriteLine("\nLähen kooli");
+            Console.WriteLine("\nTellid omale Uberi ja lähed kooli.");
+            System.Threading.Thread.Sleep(1111);
+            Console.Clear();
             Mait.volgnevused = 0;
             Mait.vasimus += 10;
             Mait.stress += 5;
@@ -86,7 +96,9 @@ namespace praktika
                 game();
             }
 
-            Console.WriteLine("Jõudsid kooli ja õpetaja andis rühmatunnitöö.\nA - Tee kaasa\nB - Lase teistel kõik töö ära teha nagu kombeks\n");
+            Console.WriteLine("Jõudsid kooli ja õpetaja andis rühmatunnitöö.");
+            System.Threading.Thread.Sleep(1111);
+            Console.WriteLine( "A - Tee kaasa, sest sa tahad ka ükspäev oma firma teha ja tulumaksu mitte maksta.\nB - Lase teistel kõik töö ära teha nagu kombeks, sa lähed ju Soome tänavakive panema.\n");
             tunnitoo();
 
             Console.WriteLine("On söögi vahetund.\nA - Lähed toitlustusasutusse Hesburger\nB - Lähed sööklasse\n");
@@ -111,7 +123,6 @@ namespace praktika
                 kontrolltoo();
             }
         }
-
 
         static void hessi()
         {
@@ -323,16 +334,17 @@ namespace praktika
 
         static void tunnitoo()
         {
+            
             key = Console.ReadKey().Key.ToString();
             kustuta_sisend();
             if (key.ToUpper() == "A")
             {
-                Console.WriteLine("\nOled tubli tuupur, õppisid Dell'i manuaali pähe!");
+                Console.WriteLine("\nOled tubli tuupur, õppisid venekeelse Dell'i manuaali pähe! Tulevikutöö läpakaid parandada Lasnamäel on juba kasvõi kotis!");
                 Mait.vasimus += 10;
             }
             else if (key.ToUpper() == "B")
             {
-                Console.WriteLine("\nAvasid growtopias viienda leveli, aga jäid teemast maha!");
+                Console.WriteLine("\nLased teistel kõik tunnis ära teha. Ilmselt ei tee sa enam vahet, mis on вода ja водка vahe, kuid sellest hoolimata ei ole sa enam stressis.");
                 Mait.volgnevused += 10;
                 Mait.stress -= 10;
                 skoor++;
@@ -687,9 +699,25 @@ namespace praktika
 
             }
         }
+<<<<<<< HEAD
         }
     
 
+=======
+        static void skoor_pluss(string valik)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(valik);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+        static void skoor_miinus(string valik)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(valik);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+    }
+>>>>>>> be93d6fc4968195ec5e3ac19da375b6251d289f8
 
 
 
