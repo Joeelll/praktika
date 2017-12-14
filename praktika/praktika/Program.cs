@@ -87,9 +87,7 @@ namespace praktika
         static void mineKooli()
         {
             Console.WriteLine("\nTellid omale Uberi ja lähed kooli.");
-<<<<<<< HEAD
             System.Threading.Thread.Sleep(6666);
-=======
             Console.Write("Sõidad kooli..... ");
             using (var progress = new ProgressBar())
             {
@@ -100,7 +98,6 @@ namespace praktika
                 }
             }
             Console.WriteLine("Done.");
->>>>>>> 5e7379a77c51f5c3297a5a0ca03c0da495da7f6e
             Console.Clear();
             Mait.volgnevused = 0;
             Mait.vasimus += 10;
