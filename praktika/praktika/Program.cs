@@ -79,6 +79,7 @@ namespace praktika
 
         static void magaEdasi()
         {
+
             Console.WriteLine("\nOled parajalt oma astraalrännakut sooritamas, kui ema peksab su ukse maha ja ajab sind üles. Pead ikka kooli minnema.");
             Mait.volgnevused += 10;
             Mait.vasimus -= 5;
