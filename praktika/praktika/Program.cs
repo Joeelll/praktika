@@ -191,7 +191,7 @@ namespace praktika
                     Mait.vasimus += 5;
                 }
             }
-            if(key.ToUpper() == "B")
+            if (key.ToUpper() == "B")
             {
                 Console.WriteLine("\nSa ei proovinud politseiga raakida, saad tavalise trahvi.");
                 Mait.raha -= 10;
@@ -558,7 +558,7 @@ namespace praktika
                 skoor++;
             }
             kodutood();
-            
+
         }
         static void kodutood()
         {
@@ -614,32 +614,71 @@ namespace praktika
                 Console.WriteLine("\nNMÄNG LÄBI!");
 
             }
-            if (key.ToUpper() == "B")
+        }
+            static void hommik2()
             {
-                Console.WriteLine("\nPelasid terve öö csi ja oled nüüd väga väsinud.");
-                Mait.vasimus += 20;
-                Mait.nalg += 10;
-                Mait.janu += 10;
-                skoor++;
-                Mait = new opilane();
-                Mait.raha = 10;
-                Console.WriteLine("\nSul on raha: " + Mait.raha);
-                Mait.nalg = 0;
-                Console.WriteLine("Su nälg on hetkel: " + Mait.nalg);
-                Mait.janu = 0;
-                Console.WriteLine("Su janu on: " + Mait.janu);
-                Mait.vasimus = 15;
-                Console.WriteLine("Väsimus on: " + Mait.vasimus);
-                Mait.volgnevused = 0;
-                Console.WriteLine("Võlgnevuste suurus on: " + Mait.volgnevused);
-                Mait.stress = 0;
-                Console.WriteLine("Stressinäitaja on: " + Mait.stress);
-                Mait.promill = 0;
-                Console.WriteLine("Joobeseisund on " + Mait.promill + " promilli.");
-                Mait.tups = 10;
-                Console.WriteLine("\nMÄNG LÄBI!");
+                if (key.ToUpper() == "B")
+                {
+                    Console.WriteLine("\nPelasid terve öö csi ja oled nüüd väga väsinud.");
+                    Mait.vasimus += 20;
+                    Mait.nalg += 10;
+                    Mait.janu += 10;
+                    skoor++;
+                    Mait = new opilane();
+                    Mait.raha = 10;
+                    Console.WriteLine("\nSul on raha: " + Mait.raha);
+                    Mait.nalg = 0;
+                    Console.WriteLine("Su nälg on hetkel: " + Mait.nalg);
+                    Mait.janu = 0;
+                    Console.WriteLine("Su janu on: " + Mait.janu);
+                    Mait.vasimus = 15;
+                    Console.WriteLine("Väsimus on: " + Mait.vasimus);
+                    Mait.volgnevused = 0;
+                    Console.WriteLine("Võlgnevuste suurus on: " + Mait.volgnevused);
+                    Mait.stress = 0;
+                    Console.WriteLine("Stressinäitaja on: " + Mait.stress);
+                    Mait.promill = 0;
+                    Console.WriteLine("Joobeseisund on " + Mait.promill + " promilli.");
+                    Mait.tups = 10;
+                    Console.WriteLine("\nMÄNG LÄBI!");
+                }
+                Console.ReadKey();
+                {
+                    Console.WriteLine("Hommik! On nädalavahetus. \nA - Lähen teen süüa köögis \nB - Lähen söön väljas \nC - Magan edasi");
+                    key = Console.ReadKey().Key.ToString();
+                    kustuta_sisend();
+                    if (key.ToUpper() == "A")
+                    {
+                        Console.WriteLine("Tegid omale süüa ja oled valmis tegudeks!");
+                        Mait.nalg -= 5;
+                        Mait.janu -= 5;
+                        Mait.vasimus -= 5;
+                        Mait.stress -= 5;
+                        skoor++;
+                    }
+                    if (key.ToUpper() == "B")
+                    {
+                        Console.WriteLine("Sõid väljas ja oled valmis tegudeks!");
+                        Mait.raha -= 5;
+                        Mait.nalg -= 5;
+                        Mait.janu -= 5;
+                        Mait.stress -= 5;
+                        Mait.vasimus -= 5;
+                        skoor++;
+
+                    }
+                    if (key.ToUpper() == "C")
+                    {
+                        Console.WriteLine("Magasid kaua ja oled valmis tegudeks tühja kõhuga");
+                        Mait.vasimus -= 10;
+                        Mait.stress -= 5;
+                        Mait.janu += 5;
+                        Mait.nalg += 5;
+                        skoor++;
+
+                    }
+                }
             }
-            Console.ReadKey();
         }
         static void skoor_pluss(string valik)
         {
@@ -654,7 +693,7 @@ namespace praktika
             Console.ForegroundColor = ConsoleColor.White;
         }
     }
-    }
+
 
 
 
