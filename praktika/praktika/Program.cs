@@ -79,7 +79,11 @@ namespace praktika
 
         static void magaEdasi()
         {
-
+            Console.WriteLine(" 0000  000000   000000   0000  ");
+            Console.WriteLine("0    0     0         0  0    0");
+            Console.WriteLine("0    0   000     00000  0    0");
+            Console.WriteLine("0    0   0           0  0    0");
+            Console.WriteLine(" 0000   0    o  000000   0000  ");
             Console.WriteLine("\nOled parajalt oma astraalrännakut sooritamas, kui ema peksab su ukse maha ja ajab sind üles. Pead ikka kooli minnema.");
             Mait.volgnevused += 10;
             Mait.vasimus -= 5;
