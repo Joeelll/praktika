@@ -54,7 +54,7 @@ namespace praktika
                 Console.WriteLine("\nOn varahommik ja tuleb kooli minna. Sa ei läinud eile normaalsel ajal magama, nagu sul kombeks on ja nüüd on uni rõvedalt suur.\nSul on valida kas:");
                 System.Threading.Thread.Sleep(1111);
                 skoor_pluss("A - Maga edasi, olen naguinii praktikas kõigest ees ja õps ei kontrolli kohalolekut.");
-                skoor_miinus( "B - Mine kooli, koolis on Jaan ja Jaan on äge.\n");
+                skoor_miinus("B - Mine kooli, koolis on Jaan ja Jaan on äge.\n");
                 key = Console.ReadKey().Key.ToString();
                 kustuta_sisend();
                 if (key.ToUpper() == "A")
@@ -98,7 +98,7 @@ namespace praktika
 
             Console.WriteLine("Jõudsid kooli ja õpetaja andis rühmatunnitöö.");
             System.Threading.Thread.Sleep(1111);
-            Console.WriteLine( "A - Tee kaasa, sest sa tahad ka ükspäev oma firma teha ja tulumaksu mitte maksta.\nB - Lase teistel kõik töö ära teha nagu kombeks, sa lähed ju Soome tänavakive panema.\n");
+            Console.WriteLine("A - Tee kaasa, sest sa tahad ka ükspäev oma firma teha ja tulumaksu mitte maksta.\nB - Lase teistel kõik töö ära teha nagu kombeks, sa lähed ju Soome tänavakive panema.\n");
             tunnitoo();
 
             Console.WriteLine("On söögi vahetund.\nA - Lähed toitlustusasutusse Hesburger\nB - Lähed sööklasse\n");
@@ -334,7 +334,7 @@ namespace praktika
 
         static void tunnitoo()
         {
-            
+
             key = Console.ReadKey().Key.ToString();
             kustuta_sisend();
             if (key.ToUpper() == "A")
@@ -663,47 +663,47 @@ namespace praktika
                 }
             }
         }
-            static void plaanid()
+        static void plaanid()
+        {
+            Console.WriteLine("Kuna on nädalavahetus,siis sul pole kooli. Seega mis sa teha tahad? \nA - Mängin terve päev csi ja õhtul lähed peole \nB - Saad sõpradega kokku, veedad sõpradega aega ja õhtul lähed peole \nC - Teed terve päev võlgnevusi tasa ja lähed õhtul peole");
+            key = Console.ReadKey().Key.ToString();
+            kustuta_sisend();
+            if (key.ToUpper() == "A")
             {
-                Console.WriteLine("Kuna on nädalavahetus,siis sul pole kooli. Seega mis sa teha tahad? \nA - Mängin terve päev csi ja õhtul lähed peole \nB - Saad sõpradega kokku, veedad sõpradega aega ja õhtul lähed peole \nC - Teed terve päev võlgnevusi tasa ja lähed õhtul peole");
-                key = Console.ReadKey().Key.ToString();
-                kustuta_sisend();
-                if (key.ToUpper() == "A")
-                {
-                    Console.WriteLine("Mängisid terve päev csi ja ei saanud rank upi. Lähed peole");
-                    Mait.vasimus += 5;
-                    Mait.janu += 5;
-                    Mait.nalg += 5;
-                    skoor++;
-                }
-                if (key.ToUpper() == "B")
-                {
-                    Console.WriteLine("Olid terve päevb sõpradega. Lähed peole");
-                    Mait.tups += 5;
-                    Mait.vasimus += 5;
-                    Mait.stress += 5;
-                    Mait.janu += 5;
-                    Mait.nalg += 5;
-                    skoor++;
-                }
-                if (key.ToUpper() == "C")
-                {
-                    Console.WriteLine("Tegid terve päev kooli võlgnevusi. Lähed peole");
-                    Mait.janu += 5;
-                    Mait.nalg += 5;
-                    Mait.vasimus += 10;
-                    Mait.stress += 15;
-                    Mait.volgnevused -= 20;
-                    skoor++;
-                }
-
+                Console.WriteLine("Mängisid terve päev csi ja ei saanud rank upi. Lähed peole");
+                Mait.vasimus += 5;
+                Mait.janu += 5;
+                Mait.nalg += 5;
+                skoor++;
             }
-        }
-<<<<<<< HEAD
-        }
-    
+            if (key.ToUpper() == "B")
+            {
+                Console.WriteLine("Olid terve päevb sõpradega. Lähed peole");
+                Mait.tups += 5;
+                Mait.vasimus += 5;
+                Mait.stress += 5;
+                Mait.janu += 5;
+                Mait.nalg += 5;
+                skoor++;
+            }
+            if (key.ToUpper() == "C")
+            {
+                Console.WriteLine("Tegid terve päev kooli võlgnevusi. Lähed peole");
+                Mait.janu += 5;
+                Mait.nalg += 5;
+                Mait.vasimus += 10;
+                Mait.stress += 15;
+                Mait.volgnevused -= 20;
+                skoor++;
+            }
 
-=======
+        }
+
+
+
+
+
+
         static void skoor_pluss(string valik)
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -717,7 +717,8 @@ namespace praktika
             Console.ForegroundColor = ConsoleColor.White;
         }
     }
->>>>>>> be93d6fc4968195ec5e3ac19da375b6251d289f8
+}
+
 
 
 
