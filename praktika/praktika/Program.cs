@@ -87,6 +87,9 @@ namespace praktika
         static void mineKooli()
         {
             Console.WriteLine("\nTellid omale Uberi ja lähed kooli.");
+<<<<<<< HEAD
+            System.Threading.Thread.Sleep(6666);
+=======
             Console.Write("Sõidad kooli..... ");
             using (var progress = new ProgressBar())
             {
@@ -97,6 +100,7 @@ namespace praktika
                 }
             }
             Console.WriteLine("Done.");
+>>>>>>> 5e7379a77c51f5c3297a5a0ca03c0da495da7f6e
             Console.Clear();
             Mait.volgnevused = 0;
             Mait.vasimus += 10;
@@ -554,7 +558,7 @@ namespace praktika
 
         static void ohtusook()
         {
-            Console.WriteLine("\nOled jõudnud koju. On aeg suua ohtust \nA - Lahen soon ohtust kuna koht on tuhi ja olen vasinud \nB - Ei soo ohtust kuna csi on vaja pelada\n");
+            Console.WriteLine("\nOled jõudnud koju. On aeg süüa õhtust \nA - Lahen söön õhtust kuna kõht on tühi ja olen väsinud \nB - Ei söö õhtust kuna csi on vaja pelada\n");
             key = Console.ReadKey().Key.ToString();
             if (key.ToUpper() == "A")
                 kustuta_sisend();
@@ -575,19 +579,19 @@ namespace praktika
         }
         static void kodutood()
         {
-            Console.WriteLine("\nNüüd oleks aeg teha kodutoid \nA - Teen oma kodutood ara \nB - Lähen puhkama, mängin arvutiga ja vaatan telekat\n");
+            Console.WriteLine("\nNüüd oleks aeg teha kodutöid \nA - Teen oma kodutööd ara \nB - Lähen puhkama, mängin arvutiga ja vaatan telekat\n");
             key = Console.ReadKey().Key.ToString();
             kustuta_sisend();
             if (key.ToUpper() == "A")
             {
-                Console.WriteLine("\nHea too! Opetajad on homme koolis kindlasti rahul");
+                Console.WriteLine("\nHea töö! Õpetajad on homme koolis kindlasti rahul");
                 Mait.stress += 5;
                 Mait.vasimus += 5;
                 skoor++;
             }
             if (key.ToUpper() == "B")
             {
-                Console.WriteLine("\nPole hullu. Said volgnevusi juurde, aga samas puhkasid välja");
+                Console.WriteLine("\nPole hullu. Said võlgnevusi juurde, aga samas puhkasid välja");
                 Mait.vasimus -= 5;
                 Mait.stress -= 5;
                 Mait.volgnevused += 10;
@@ -597,7 +601,7 @@ namespace praktika
         }
         static void magamine()
         {
-            Console.WriteLine("\nKell on palju. On age magama minna \nA - Lähen magama \nB - Ei lähe magama ja pelan terve öö csi\n");
+            Console.WriteLine("\nKell on palju. On aeg magama minna \nA - Lähen magama \nB - Ei lähe magama ja pelan terve öö csi\n");
             key = Console.ReadKey().Key.ToString();
             kustuta_sisend();
             if (key.ToUpper() == "A")
@@ -610,11 +614,7 @@ namespace praktika
                 skoor++;
                 hommik2();
             }
-        }
-        
-        static void hommik2()
-        {
-            if (key.ToUpper() == "B")
+            else if (key.ToUpper() == "B")
             {
                 Console.WriteLine("\nPelasid terve öö csi ja oled nüüd väga väsinud.");
                 Mait.vasimus += 20;
@@ -639,7 +639,10 @@ namespace praktika
                 Mait.tups = 10;
                 Console.WriteLine("\nMÄNG LÄBI!");
             }
-            Console.ReadKey();
+        }
+        
+        static void hommik2()
+        {
             {
 
                 Console.ReadKey();
@@ -697,7 +700,7 @@ namespace praktika
             }
             if (key.ToUpper() == "B")
             {
-                Console.WriteLine("Olid terve päevb sõpradega. Lähed peole");
+                Console.WriteLine("Olid terve päev sõpradega. Lähed peole");
                 Mait.tups += 5;
                 Mait.vasimus += 5;
                 Mait.stress += 5;
