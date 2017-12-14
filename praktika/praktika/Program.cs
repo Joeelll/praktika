@@ -35,7 +35,7 @@ namespace praktika
             if (restartGame == false)
             {
                 Mait = new opilane();
-                Mait.raha = 10;
+                Mait.raha = 15;
                 Console.WriteLine("\nSul on raha: " + Mait.raha);
                 Mait.nalg = 0;
                 Console.WriteLine("Su nälg on hetkel: " + Mait.nalg);
@@ -57,7 +57,7 @@ namespace praktika
                 Thread.Sleep(1500);
                 skoor_pluss("A - Maga edasi, olen naguinii praktikas kõigest ees ja õps ei kontrolli kohalolekut.");
                 Thread.Sleep(500);
-                skoor_miinus("B - Mine kooli, koolis on Jaan ja Jaan on äge.\n");
+                skoor_miinus("B - Mine kooli, koolis on Jaan ja Jaan on äge vend.\n");
                 key = Console.ReadKey().Key.ToString();
                 kustuta_sisend();
                 if (key.ToUpper() == "A")
@@ -90,7 +90,7 @@ namespace praktika
         {
             Console.Clear();
             Console.WriteLine("Tellid omale Uberi ja lähed kooli.");
-            Thread.Sleep(2222);
+            Thread.Sleep(1000);
             Console.Write("Sõidad kooli..... ");
             using (var progress = new ProgressBar())
             {
@@ -109,7 +109,7 @@ namespace praktika
                 game();
             }
             Console.Clear();
-            Console.WriteLine("Jõudsid kooli ja õpetaja andis rühmatunnitöö.");
+            Console.WriteLine("Oled jõudnud kooli. Tund hakkab, õpetaja andis rühmatunnitöö.");
             Thread.Sleep(2222);
             tunnitoo();
 
@@ -155,12 +155,28 @@ namespace praktika
 
         static void hessi()
         {
-            Console.WriteLine("Lähed Hesburgerisse, aga seal oli pikk järjekord ja sa jäid selle tõttu ühe tunni hiljaks!");
-            Mait.vasimus = 5;
-            Mait.volgnevused = 10;
-            Mait.nalg = 0;
-            Mait.janu = 0;
-            skoor++;
+            if (Mait.raha <= 5)
+            {
+                skoor_miinus("Lähed Hesburgerisse, aga unustad, et oled õppetoetust saamata ja rahad on otsas. Jääd ühe tunni hiljaks!");
+                Mait.volgnevused += 10;
+                Mait.vasimus += 5;
+                Mait.nalg += 10;
+                Mait.janu += 10;
+                skoor--;
+                Thread.Sleep(2000);
+                Console.Clear();
+            }
+            else
+            {
+                skoor_pluss("Lähed Hesburgerisse, aga seal oli pikk järjekord ja sa jäid selle tõttu ühe tunni hiljaks!");
+                Mait.vasimus += 5;
+                Mait.volgnevused += 10;
+                Mait.nalg = 0;
+                Mait.janu = 0;
+                skoor++;
+                Thread.Sleep(2000);
+                Console.Clear();
+            }
         }
 
         static void autosoit()
@@ -231,7 +247,7 @@ namespace praktika
         }
         static void sookla()
         {
-            Console.WriteLine("\nLähed sööklasse!\nKontrollid, kas kaardi võtsid.");
+            Console.WriteLine("Lähed sööklasse!\nKontrollid, kas kaardi võtsid.");
             int chance = rnd.Next(1, 100);
             Thread.Sleep(2000);
             if (chance % 2 == 0)
@@ -239,23 +255,33 @@ namespace praktika
                 skoor_miinus("Jätsid kaardi koju lollpea!");
                 Mait.stress += 10;
                 skoor--;
-                Console.WriteLine("A - Räägi söögitädiga");
-                Console.WriteLine("B - Osta puhvetist toitu");
-                Console.WriteLine("C - Mine ikka Hesburgerisse");
+                skoor_null("A - Räägi söögitädiga");
+                skoor_null("B - Osta puhvetist toitu");
+                skoor_pluss("C - Mine ikka Hesburgerisse");
                 key = Console.ReadKey().Key.ToString();
                 kustuta_sisend();
                 if (key.ToUpper() == "A")
                 {
                     if (Mait.volgnevused <= 5)
                     {
-                        Console.WriteLine("\nOskad vene keelt hästi, saad süüa!");
+                        Console.WriteLine("\nRäägid söögitädiga...");
+                        using (var progress = new ProgressBar())
+                        {
+                            for (int i = 0; i <= 100; i++)
+                            {
+                                progress.Report((double)i / 50);
+                                Thread.Sleep(50);
+                            }
+                        }
+                        skoor_pluss("\nOskad vene keelt hästi, saad süüa!");
                         skoor++;
                     }
                     else
                     {
-                        Console.WriteLine("\nMait: Izvinite u menja kartochka njetu!\nSöögitädi: Kartochka net, edy net!");
+                        skoor_miinus("\nMait: Izvinite u menja kartochka njetu!\nSöögitädi: Kartochka net, edy net!");
                         Mait.nalg += 20;
                         Mait.janu += 10;
+                        skoor--;
                     }
                 }
                 else if (key.ToUpper() == "B")
@@ -270,8 +296,8 @@ namespace praktika
                     else
                     {
                         Console.WriteLine("Sa oled rahadega põhjas. Jood teed ja varastad leiba!");
-                        Mait.nalg += 15;
-                        Mait.janu -= 5;
+                        Mait.nalg += 10;
+                        Mait.janu -= 10;
                     }
                 }
                 else if (key.ToUpper() == "C")
@@ -283,14 +309,16 @@ namespace praktika
             {
                 if (chance % 2 == 0)
                 {
-                    Console.WriteLine("Kaart on olemas, täna on söögiks Kalaburger");
+                    Console.WriteLine("Kaart on olemas, täna on söögiks kalaburger");
                 }
                 else
                 {
-                    Console.WriteLine("Kaart on olemas, täna on söögiks Kalasupp");
+                    Console.WriteLine("Kaart on olemas, täna on söögiks kalasupp");
                 }
                 Mait.nalg = 0;
                 Mait.janu = 0;
+                Thread.Sleep(2000);
+                Console.Clear();
             }
             var surnud = kontrollinaitajaid();
             if (surnud)
@@ -401,7 +429,9 @@ namespace praktika
 
         static void kontrolltoo()
         {
-            Console.WriteLine("\nKoolis on kontrolltöö!\nA - Spikerda\nB - Looda parimat\n");
+            Console.WriteLine("Koolis on kontrolltöö!");
+            skoor_pluss("A - Spikerda");
+            skoor_null("B - Looda parimat");
             key = Console.ReadKey().Key.ToString();
             kustuta_sisend();
             if (key.ToUpper() == "A")
@@ -443,12 +473,12 @@ namespace praktika
         }
         static void kehaline()
         {
-            Console.WriteLine("\nAlgab kehalise tund!");
+            Console.WriteLine("Söögivahetund sai läbi. Algab kehalise tund!");
             int chance = rnd.Next(1, 100);
             Boolean exit = false;
             Boolean exit2 = false;
             Boolean exit3 = false;
-
+            Thread.Sleep(2000);
             if (chance % 2 == 0)
             {
                 Console.WriteLine("Ei vedanud, täna oled sina rivikorrapidaja!");
@@ -459,7 +489,8 @@ namespace praktika
                     kustuta_sisend();
                     if (key.ToUpper() == "A")
                     {
-                        Console.WriteLine("\nKalle on rõõmus, õige käsk!");
+                        skoor_pluss("\nKalle on rõõmus, õige käsk!");
+                        skoor++;
                         while (exit2 == false)
                         {
                             Console.WriteLine("Järgmine käsk on: \nA-Joondu\nB-Keskele vaat\nC-Valvel");
@@ -467,7 +498,8 @@ namespace praktika
                             kustuta_sisend();
                             if (key.ToUpper() == "A")
                             {
-                                Console.WriteLine("\nKalle on rõõmus, õige käsk!");
+                                skoor_pluss("\nKalle on rõõmus, õige käsk!");
+                                skoor++;
                                 while (exit3 == false)
                                 {
                                     Console.WriteLine("Järmine käsk on: \nA-Keskele vaat\nB-Valvel");
@@ -475,30 +507,36 @@ namespace praktika
                                     kustuta_sisend();
                                     if (key.ToUpper() == "A")
                                     {
-                                        Console.WriteLine("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
+                                        skoor_miinus("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
                                         Mait.stress += 5;
                                         Mait.vasimus += 5;
+                                        skoor--;
                                     }
                                     else if (key.ToUpper() == "B")
                                     {
-                                        Console.WriteLine("\nKalle on rõõmus, õige käsk!");
+                                        skoor_pluss("\nKalle on rõõmus, õige käsk!");
+                                        skoor++;
+                                        Thread.Sleep(1000);
                                         Console.WriteLine("Keskele vaat!");
                                         exit = true;
                                         exit2 = true;
                                         exit3 = true;
                                         Console.WriteLine("Tund saab läbi.\n");
+                                        Thread.Sleep(2000);
                                     }
                                 }
                             }
                             else if (key.ToUpper() == "B")
                             {
-                                Console.WriteLine("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
+                                skoor_miinus("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
+                                skoor--;
                                 Mait.stress += 5;
                                 Mait.vasimus += 5;
                             }
                             else if (key.ToUpper() == "C")
                             {
-                                Console.WriteLine("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
+                                skoor_miinus("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
+                                skoor--;
                                 Mait.stress += 5;
                                 Mait.vasimus += 5;
                             }
@@ -506,35 +544,40 @@ namespace praktika
                     }
                     else if (key.ToUpper() == "B")
                     {
-                        Console.WriteLine("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
+                        skoor_miinus("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
+                        skoor--;
                         Mait.stress += 5;
                         Mait.vasimus += 5;
                     }
                     else if (key.ToUpper() == "C")
                     {
-                        Console.WriteLine("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
+                        skoor_miinus("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
                         Mait.stress += 5;
                         Mait.vasimus += 5;
+                        skoor--;
                     }
                     else if (key.ToUpper() == "C")
                     {
-                        Console.WriteLine("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
+                        skoor_miinus("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
                         Mait.stress += 5;
                         Mait.vasimus += 5;
+                        skoor--;
                     }
                     else if (key.ToUpper() == "D")
                     {
-                        Console.WriteLine("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
+                        skoor_miinus("\nVale käsk! Kalle on vihane, 15 kätekõverdust!");
                         Mait.stress += 5;
                         Mait.vasimus += 5;
+                        skoor--;
                     }
                 }
             }
             else
             {
                 Console.WriteLine("Vedas, mingi teine lollpea peab korrapidaja olema!\nIstud jõusaalis ja mängid growtopiat!");
-                System.Threading.Thread.Sleep(2000);
+                Thread.Sleep(2000);
                 Console.WriteLine("Tund saab läbi.");
+                Console.Clear();
             }
             var surnud = kontrollinaitajaid();
             if (surnud)
@@ -547,7 +590,10 @@ namespace praktika
 
         static void tups()
         {
-            Console.WriteLine("Lähed peale kooli raha teenima tupsu müümisega?\nA - Lähen müüma, sest raha on vaja.\nB - Ei lähe müüma, raha on piisavalt praegu.\n");
+            Console.WriteLine("Lähed peale kooli raha teenima tupsu müümisega?");
+            Thread.Sleep(2000);
+            skoor_pluss("A - Lähen müüma, sest raha on vaja.");
+            skoor_miinus("B - Ei lähe müüma, raha on piisavalt praegu.");
             key = Console.ReadKey().Key.ToString();
             kustuta_sisend();
             int chance = rnd.Next(1, 100);
@@ -555,7 +601,7 @@ namespace praktika
             {
                 if (chance % 2 == 0)
                 {
-                    Console.WriteLine("\nMüüsid tupsu ja ei jäänud vahele. Vedas!");
+                    skoor_pluss("\nMüüsid tupsu ja ei jäänud vahele. Vedas!");
                     Mait.raha += 10;
                     Mait.stress += 5;
                     skoor++;
@@ -563,15 +609,16 @@ namespace praktika
                 }
                 else
                 {
-                    Console.WriteLine("\nMüüsid tupsu ja jäid vahele. Su kogu tups konfiskeeriti ära.");
+                    skoor_miinus("\nMüüsid tupsu ja jäid vahele. Su kogu tups konfiskeeriti ära.");
                     politseilabiraakimised();
+                    skoor--;
 
                 }
             }
             else if (key.ToUpper() == "B")
             {
                 kustuta_sisend();
-                Console.WriteLine("Tubli! Tupsu ei tohigi müüa");
+                skoor_pluss("\nTubli! Tupsu ei tohigi müüa");
                 skoor++;
             }
             var surnud = kontrollinaitajaid();
@@ -793,6 +840,12 @@ namespace praktika
         static void skoor_miinus(string valik)
         {
             Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(valik);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+        static void skoor_null(string valik)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(valik);
             Console.ForegroundColor = ConsoleColor.White;
         }
