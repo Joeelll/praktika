@@ -53,6 +53,11 @@ namespace praktika
                 Thread.Sleep(1000);
 
                 Console.Clear();
+                Console.WriteLine(" 0000  000000    0000    0000  ");
+                Console.WriteLine("0    0     0    0    0  0    0");
+                Console.WriteLine("0    0   000    0    0  0    0");
+                Console.WriteLine("0    0   0      0    0  0    0");
+                Console.WriteLine(" 0000   0    o   0000    0000  ");
                 Console.WriteLine("On varahommik ja tuleb kooli minna. Sa ei läinud eile normaalsel ajal magama, nagu sul kombeks on ja nüüd on uni rõvedalt suur.\nSul on valida kas:");
                 Thread.Sleep(1500);
                 skoor_pluss("A - Maga edasi, olen naguinii praktikas kõigest ees ja õps ei kontrolli kohalolekut.");
